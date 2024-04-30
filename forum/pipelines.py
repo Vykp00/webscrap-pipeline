@@ -89,28 +89,38 @@ class SaveToPostgresPipeline:
         """)
 
     def process_item(self, item, spider):
+        # Check to see if the question's id is already in database
+        self.cur.execute("""SELECT * FROM qa_question WHERE id = %s;""", (item['id'],))
+        result = self.cur.fetchone()
 
-        # Execute insert of data into databases
-        try:
-            # Insert question data
-            self.cur.execute("""
-            INSERT INTO qa_question (
-            id, title, url, tags, post_date, scrap_date, category, content) VALUES (
-            %s, %s, %s, %s, %s, %s, %s, %s);""", (
-                item['id'],
-                item['title'],
-                item['url'],
-                item['tags'],
-                item['post_date'],
-                item['scrap_date'],
-                item['category'],
-                str(item['content'])
-            ))
+        # If the id already exist, create log message
+        if result:
+            spider.logger.warning("Item already exists in database and won't be saved: %s" % item['id'])
 
-            self.connection.commit()
-        except Exception as e:
-            # Error handling
-            self.connection.rollback()  # Roll back on error
+        # If the id is new, log the DB
+        else:
+            # Execute insert of data into databases
+            try:
+                # Insert question data
+                self.cur.execute("""
+                INSERT INTO qa_question (
+                id, title, url, tags, post_date, scrap_date, category, content) VALUES (
+                %s, %s, %s, %s, %s, %s, %s, %s);""", (
+                    item['id'],
+                    item['title'],
+                    item['url'],
+                    item['tags'],
+                    item['post_date'],
+                    item['scrap_date'],
+                    item['category'],
+                    str(item['content'])
+                ))
+
+                self.connection.commit()
+                spider.logger.info("Item saved to qa_question DB: %s" % item['id'])
+            except Exception as e:
+                # Error handling
+                self.connection.rollback()  # Roll back on error
         return item
 
     # Close connection after spyder close
