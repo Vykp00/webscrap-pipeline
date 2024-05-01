@@ -15,7 +15,7 @@ from datetime import datetime
 
 import scrapy
 from scrapy import Spider
-from forum.items import ForumItem, QuestionItem
+from forum.items import QuestionItem
 
 
 class ServerlessSpider(Spider):
@@ -49,27 +49,14 @@ class ServerlessSpider(Spider):
                 # This trigger the parse_book_page callback to extract individual question's post.
                 yield scrapy.Request(relative_url, callback=self.parse_post_page)
 
-            '''
-            tags = []
-            bottom_line = post.xpath('div/div')
-            if bottom_line is not None:
-                for element in bottom_line.xpath('a[@class="discourse-tag"]//text()'):
-                    tags.append(element.get())
-            yield {
-                'title': post.xpath('span/a//text()').get(),
-                'url': post.xpath('span/a').attrib['href'],
-                'tags': tags
-            }
-            '''
+        # Go to Next page it give us the relative path such as /c/serverless-framework/5?page=1
+        next_page = response.xpath('/html/body/div[1]/div[2]/span/b/a/@href').get()
+        # Iterate through all pages until it reach the bottom
+        if next_page is not None:
+            next_page_url = 'https://forum.serverless.com' + next_page
 
-            # Go to Next page it give us the relative path such as /c/serverless-framework/5?page=1
-            next_page = response.xpath('/html/body/div[1]/div[2]/span/b/a/@href').get()
-            # Iterate through all pages until it reach the bottom
-            if next_page is not None:
-                next_page_url = 'https://forum.serverless.com' + next_page
-
-                # Then we trigger parse function again to fetch all question url from the new page
-                yield response.follow(next_page_url, callback=self.parse)
+            # Then we trigger parse function again to fetch all question url from the new page
+            yield response.follow(next_page_url, callback=self.parse)
 
     # Here we fetch each post content
     def parse_post_page(self, response):
