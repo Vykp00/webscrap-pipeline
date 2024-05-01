@@ -1,6 +1,9 @@
 # Create Spider to extract data from StackOverFlow
-
+"""
+Author: Vykp00
+"""
 from scrapy import Spider, Selector
+
 from forum.items import ForumItem
 
 

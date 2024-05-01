@@ -1,20 +1,22 @@
 # Define your item pipelines here
-#
+"""
+Author: Vykp00
+"""
+import logging
 # Don't forget to add your pipeline to the ITEM_PIPELINES setting
 # See: https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 import re
 
 import psycopg2
-# useful for handling different item types with a single interface
-
 # from scrapy.exceptions import DropItem
 from itemadapter import ItemAdapter
-from forum.text_utils import normalize_corpus  # For text cleaning
 from scrapy.exceptions import DropItem
-from forum.settings import POSTGRES_HOST, POSTGRES_USER, POSTGRES_PASSWORD, POSTGRES_DB
-from forum.items import QuestionItem, ReplyItem
 
-import logging
+from forum.items import QuestionItem, ReplyItem
+from forum.settings import POSTGRES_HOST, POSTGRES_USER, POSTGRES_PASSWORD, POSTGRES_DB
+from forum.text_utils import normalize_corpus  # For text cleaning
+
+# useful for handling different item types with a single interface
 
 # create logger
 logger = logging.getLogger('__name__')
@@ -28,6 +30,8 @@ ch.setLevel(level)
 
 # add ch to logger
 logger.addHandler(ch)
+
+
 # This pipeline drop
 class DuplicatesPipeline:
     def __init__(self):

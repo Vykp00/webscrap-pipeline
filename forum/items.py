@@ -1,4 +1,7 @@
 # Define here the models for your scraped items
+"""
+Author: Vykp00
+"""
 #
 # See documentation in:
 # https://docs.scrapy.org/en/latest/topics/items.html

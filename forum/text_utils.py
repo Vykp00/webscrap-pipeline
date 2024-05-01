@@ -1,5 +1,9 @@
 # The following code contains some functions that can be used for preprocessing data and text cleansing
+"""
+Author: Vykp00
+"""
 import re
+
 import unicodedata
 
 from forum.contractions import CONTRACTION_MAP  # For removing contractions

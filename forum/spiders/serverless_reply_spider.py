@@ -1,9 +1,14 @@
 # This is the spider file to scrap reply from Serverless Forum
+"""
+Author: Vykp00
+"""
 from datetime import datetime
 
 import scrapy
 from scrapy import Spider
+
 from forum.items import ReplyItem
+
 
 class ServerlessReplySpider(Spider):
     name = 'serverless_reply'  # Spider name call
@@ -72,5 +77,3 @@ class ServerlessReplySpider(Spider):
             reply_item['content'] = reply.css('div.post p ::text').extract()  # This includes all text and @mention
 
             yield reply_item
-
-

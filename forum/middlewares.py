@@ -1,4 +1,7 @@
 # Define here the models for your spider middleware
+"""
+Author: Vykp00
+"""
 #
 # See documentation in:
 # https://docs.scrapy.org/en/latest/topics/spider-middleware.html

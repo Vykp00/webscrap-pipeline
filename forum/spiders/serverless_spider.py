@@ -1,5 +1,8 @@
 # Create Spider to extract data from Serverless Framework Forum
 """
+Author: Vykp00
+"""
+"""
 NOTE: Unlike StackOverflow, Serverless as built with Discourse whose class tags and css tags are added
 with Javascript. So what you see on browsers are different than what you can fetch with BeautifulSoup or Scrapy.
 To accurately mine the data, here what you need to do:
@@ -15,6 +18,7 @@ from datetime import datetime
 
 import scrapy
 from scrapy import Spider
+
 from forum.items import QuestionItem
 
 
