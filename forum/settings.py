@@ -9,6 +9,9 @@ Author: Vykp00
 #     https://docs.scrapy.org/en/latest/topics/settings.html
 #     https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
+import os
+import dotenv
+dotenv.load_dotenv()
 
 BOT_NAME = "forum"
 
@@ -27,10 +30,12 @@ MONGODB_DATABASE = "qa-forum"  # Database name
 MONGODB_COLLECTION = "questions"  # DB Collection name
 
 # Specify Postgres Pipeline
-POSTGRES_HOST = "localhost"
-POSTGRES_USER = "postgres"
-POSTGRES_PASSWORD = "vyadmin12345"
-POSTGRES_DB = "forum_scrapy"
+POSTGRES_HOST = os.getenv("MY_POSTGRES_HOST")
+POSTGRES_USER = os.getenv("MY_POSTGRES_USER")
+POSTGRES_PASSWORD = os.getenv("MY_POSTGRES_PASSWORD")
+POSTGRES_FORUM_DB = os.getenv("MY_POSTGRES_FORUM_DB")
+POSTGRES_STACK_DB = os.getenv("MY_POSTGRES_STACK_DB")
+
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 CONCURRENT_REQUESTS = 16
 

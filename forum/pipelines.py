@@ -13,7 +13,7 @@ from itemadapter import ItemAdapter
 from scrapy.exceptions import DropItem
 
 from forum.items import QuestionItem, ReplyItem
-from forum.settings import POSTGRES_HOST, POSTGRES_USER, POSTGRES_PASSWORD, POSTGRES_DB
+from forum.settings import POSTGRES_HOST, POSTGRES_USER, POSTGRES_PASSWORD, POSTGRES_FORUM_DB
 from forum.text_utils import normalize_corpus  # For text cleaning
 
 # useful for handling different item types with a single interface
@@ -106,7 +106,7 @@ class SaveToPostgresPipeline:
         hostname = POSTGRES_HOST
         user = POSTGRES_USER
         password = POSTGRES_PASSWORD
-        database = POSTGRES_DB
+        database = POSTGRES_FORUM_DB
 
         # Create/Connect to database
         self.connection = psycopg2.connect(host=hostname, user=user, password=password, database=database)
