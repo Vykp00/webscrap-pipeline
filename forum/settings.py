@@ -65,11 +65,23 @@ CONCURRENT_REQUESTS_PER_DOMAIN = 16
 #    "forum.middlewares.ForumSpiderMiddleware": 543,
 # }
 
+# For Fake User Agent and Browser Header
+SCRAPEOPS_API_KEY = os.getenv("MY_SCRAPEOPS_API_KEY")
+SCRAPEOPS_FAKE_USER_AGENT_ENDPOINT = 'https://headers.scrapeops.io/v1/user-agents'
+SCRAPEOPS_FAKE_BROWSERS_ENDPOINT = 'https://headers.scrapeops.io/v1/browser-headers'
+SCRAPEOPS_PROXY_ENABLED = True
+SCRAPEOPS_PROXY_SETTINGS = {'country': 'fi'}
+SCRAPEOPS_FAKE_USER_AGENT_ENABLED = True
+SCRAPEOPS_FAKE_BROWSERS_HEADER_ENABLED = True
+SCRAPEOPS_NUM_RESULTS = 5
+SCRAPEOPS_PROXY_ENABLED = True
+
 # Enable or disable downloader middlewares
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
-# DOWNLOADER_MIDDLEWARES = {
-#    "forum.middlewares.ForumDownloaderMiddleware": 543,
-# }
+DOWNLOADER_MIDDLEWARES = {
+    "forum.middlewares.ForumDownloaderMiddleware": None,
+    "forum.middlewares.FakeBrowserHeaderAgentMiddleware": 300,
+}
 
 # Enable or disable extensions
 # See https://docs.scrapy.org/en/latest/topics/extensions.html
@@ -80,7 +92,7 @@ CONCURRENT_REQUESTS_PER_DOMAIN = 16
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-    "forum.pipelines.DuplicatesPipeline": 300,
+    "forum.pipelines.DuplicatesPipeline": 400,
     "forum.pipelines.ForumPipeline": 600,
     "forum.pipelines.SaveToPostgresPipeline": 800
 }
