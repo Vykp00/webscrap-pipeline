@@ -22,7 +22,7 @@ NEWSPIDER_MODULE = "forum.spiders"
 # USER_AGENT = "forum (+http://www.yourdomain.com)"
 
 # Obey robots.txt rules
-ROBOTSTXT_OBEY = True
+ROBOTSTXT_OBEY = False
 
 # Specify MongoDB Pipeline
 MONGODB_URI = "mongodb+srv://vykp:jkiivRE8O2UHD3JR@qa-forum.dzen7ex.mongodb.net/?retryWrites=true&w=majority&appName=QA-Forum"
@@ -67,9 +67,25 @@ CONCURRENT_REQUESTS_PER_DOMAIN = 16
 
 # Enable or disable downloader middlewares
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
-# DOWNLOADER_MIDDLEWARES = {
-#    "forum.middlewares.ForumDownloaderMiddleware": 543,
-# }
+
+# For Fake User Agent and Browser Header
+SCRAPEOPS_API_KEY = os.getenv("MY_SCRAPEOPS_API_KEY")
+SCRAPEOPS_FAKE_USER_AGENT_ENDPOINT = 'https://headers.scrapeops.io/v1/user-agents'
+SCRAPEOPS_FAKE_BROWSERS_ENDPOINT = 'https://headers.scrapeops.io/v1/browser-headers'
+SCRAPEOPS_PROXY_ENABLED = True
+SCRAPEOPS_PROXY_SETTINGS = {'country': 'fi'}
+SCRAPEOPS_FAKE_USER_AGENT_ENABLED = True
+SCRAPEOPS_FAKE_BROWSERS_HEADER_ENABLED = True
+SCRAPEOPS_NUM_RESULTS = 5
+SCRAPEOPS_PROXY_ENABLED = True
+
+# For ScrapeOps Proxy API Aggregator
+DOWNLOADER_MIDDLEWARES = {
+    # "forum.middlewares.ForumDownloaderMiddleware": 543,
+    # 'forum.middleware.FakeUserAgentMiddleware': 400, # For simple anti-bot web
+    'scrapeops_scrapy_proxy_sdk.scrapeops_scrapy_proxy_sdk.ScrapeOpsScrapyProxySdk': 543,
+    'forum.middleware.FakeBrowserHeaderAgentMiddleware': 725
+}
 
 # Enable or disable extensions
 # See https://docs.scrapy.org/en/latest/topics/extensions.html
