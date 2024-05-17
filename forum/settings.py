@@ -94,7 +94,8 @@ DOWNLOADER_MIDDLEWARES = {
 ITEM_PIPELINES = {
     "forum.pipelines.DuplicatesPipeline": 400,
     "forum.pipelines.ForumPipeline": 600,
-    "forum.pipelines.SaveToPostgresPipeline": 800
+    "forum.pipelines.SaveToPostgresPipeline": None,
+    "forum.pipelines.SaveStackToPostgresPipeline": 800
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)

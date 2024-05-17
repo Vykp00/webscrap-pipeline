@@ -12,8 +12,8 @@ import psycopg2
 from itemadapter import ItemAdapter
 from scrapy.exceptions import DropItem
 
-from forum.items import QuestionItem, ReplyItem
-from forum.settings import POSTGRES_HOST, POSTGRES_USER, POSTGRES_PASSWORD, POSTGRES_FORUM_DB
+from forum.items import QuestionItem, ReplyItem, ForumItem
+from forum.settings import POSTGRES_HOST, POSTGRES_USER, POSTGRES_PASSWORD, POSTGRES_FORUM_DB, POSTGRES_STACK_DB
 from forum.text_utils import normalize_corpus  # For text cleaning
 
 # useful for handling different item types with a single interface
@@ -226,6 +226,129 @@ class SaveToPostgresPipeline:
         self.connection.close()
 
 
+# This pipeline save the StackOverFlow data to postgres table
+class SaveStackToPostgresPipeline:
+    def __init__(self):
+        # Connection Details
+        hostname = POSTGRES_HOST
+        user = POSTGRES_USER
+        password = POSTGRES_PASSWORD
+        database = POSTGRES_STACK_DB
+
+        # Create/Connect to database
+        self.connection = psycopg2.connect(host=hostname, user=user, password=password, database=database)
+
+        # Create cursor to execute query
+        self.cur = self.connection.cursor()
+
+        # Create question tables if none exist
+        self.cur.execute(
+            """CREATE TABLE IF NOT EXISTS qa_question (
+            id SERIAL PRIMARY KEY,
+            title TEXT,
+            url TEXT,
+            tags TEXT[],
+            post_date TIMESTAMP WITH TIME ZONE,
+            scrap_date TIMESTAMP WITH TIME ZONE,
+            content TEXT);
+
+            CREATE TABLE IF NOT EXISTS qa_reply (
+            id SERIAL PRIMARY KEY,
+            question_id INTEGER REFERENCES qa_question(id),
+            domain VARCHAR(255),
+            like_num INTEGER,
+            created_date TIMESTAMP WITH TIME ZONE,
+            scrap_date TIMESTAMP WITH TIME ZONE,
+            content TEXT);
+        """)
+
+    def process_item(self, item, spider):
+        # If this is a question
+        if isinstance(item, ForumItem):
+            # Check to see if the question's id is already in database
+            self.cur.execute("""SELECT * FROM qa_question WHERE id = %s;""", (item['id'],))
+            result = self.cur.fetchone()
+
+            # If the id already exist, create log message
+            if result:
+                logger.warning("Item already exists in database and won't be saved: %s" % item['id'])
+                raise DropItem("Question Item won't be saved")
+
+            # If the id is new, log the DB
+            else:
+                # Execute insert of data into databases
+                try:
+                    # Insert question data
+                    self.cur.execute("""
+                    INSERT INTO qa_question (
+                    id, title, url, tags, post_date, scrap_date, content) VALUES (
+                    %s, %s, %s, %s, %s, %s, %s);""", (
+                        item['id'],
+                        item['title'],
+                        item['url'],
+                        item['tags'],
+                        item['post_date'],
+                        item['scrap_date'],
+                        str(item['content'])
+                    ))
+
+                    self.connection.commit()
+                    logger.info("Item saved to qa_question DB: %s" % item['id'])
+                except Exception as e:
+                    # Error handling
+                    self.connection.rollback()  # Roll back on error
+                    logger.warning("Item couldn't be saved: %s" % item['id'])
+
+        # If this is a reply
+        if isinstance(item, ReplyItem):
+            # Check to see if the reply's id is already in database
+            self.cur.execute("""SELECT * FROM qa_reply WHERE id = %s;""", (item['id'],))
+            result = self.cur.fetchone()
+
+            # Check to see if the reply question's id is already in database
+            self.cur.execute("SELECT id FROM qa_question WHERE id = %s", (item['question_id'],))
+            question_exists = self.cur.fetchone()
+
+            # If the id already exist, create log message
+            if result:
+                logger.warning("Item already exists in database and won't be saved: %s" % item['id'])
+                raise DropItem(f'Duplicate item found: {item!r}')
+
+            # If the question doesn't exist yet, drop item
+            elif not question_exists:
+                logger.warning("Question Item for this Reply doesn't exist: %s" % item['id'])
+                raise DropItem(f'Drop Reply: {item!r}')
+
+            # If the id is new, log the DB
+            else:
+                # Try inserting to database
+                try:
+                    self.cur.execute("""
+                    INSERT INTO qa_reply (
+                    id, question_id, domain, like_num, created_date, scrap_date, content) VALUES (
+                    %s, %s, %s, %s, %s, %s, %s);""", (
+                        item['id'],
+                        item['question_id'],
+                        item['domain'],
+                        item['like_num'],
+                        item['created_date'],
+                        item['scrap_date'],
+                        str(item['content'])
+                    ))
+
+                    self.connection.commit()
+                    logger.info("Item saved to qa_reply DB: %s" % item['id'])
+                except Exception as e:
+                    # Roll back on error
+                    self.connection.rollback()
+                    logger.warning("Item couldn't be saved: %s" % item['id'])
+        return item
+
+    # Close connection after spyder close
+    def close_spider(self, spider):
+        # Close cursor  & connection database
+        self.cur.close()
+        self.connection.close()
 '''
 class MongoDBPipeline(object):
 
