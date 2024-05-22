@@ -3,5 +3,5 @@
   <component name="Black">
     <option name="sdkName" value="iss-env" />
   </component>
-  <component name="ProjectRootManager" version="2" project-jdk-name="iss-env" project-jdk-type="Python SDK" />
+  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.9 (webscrap-pipeline)" project-jdk-type="Python SDK" />
 </project>
