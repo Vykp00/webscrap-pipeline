@@ -243,24 +243,24 @@ def get_jobs(url, num_jobs, verbose, slp_time):
                     company_size = company_card.find_element(By.CSS_SELECTOR,
                                                              'div > div > div:nth-child(1) > div').text
                 except NoSuchElementException:
-                    company_size = -1
+                    company_size = 'NA'
 
                 try:
                     company_founded = company_card.find_element(By.CSS_SELECTOR,
                                                                 'div > div > div:nth-child(2) > div').text
                 except NoSuchElementException:
-                    company_founded = -1
+                    company_founded = 'NA'
 
                 try:
                     company_sector = company_card.find_element(By.CSS_SELECTOR,
                                                                'div > div > div:nth-child(5) > div').text
                 except NoSuchElementException:
-                    company_sector = -1
+                    company_sector = 'NA'
 
             except NoSuchElementException:  # Rarely, some job postings do not have the "Company" tab.
-                company_size = -1
-                company_founded = -1
-                company_sector = -1
+                company_size = 'NA'
+                company_founded = 'NA'
+                company_sector = 'NA'
 
             if verbose:
                 print("Size: {}".format(company_size))
@@ -272,6 +272,7 @@ def get_jobs(url, num_jobs, verbose, slp_time):
                 "Job ID": job_id,
                 "Job Title": job_title,
                 "Job Description": job_description,
+                "Company ID": company_id,
                 "Company Name": company_name,
                 "Location": location,
                 "Size": company_size,
@@ -281,6 +282,7 @@ def get_jobs(url, num_jobs, verbose, slp_time):
             # add job to jobs
 
         # Clicking on the "next page" button
+        # FIXME: The Code re-scrape the first page. Write a pipelines to remove duplicate data
         try:
             driver.find_element(By.CSS_SELECTOR, 'button[data-test="load-more"]').click()
         except NoSuchElementException:
