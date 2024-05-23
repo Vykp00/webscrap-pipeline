@@ -1,0 +1,572 @@
+Job ID,Job Title,Job Description,Company ID,Company Name,Location,Size,Founded,Sector
+1009290863913,Software Engineer,"The Business Applications Platform is a rapidly growing organization that is responsible for the Microsoft Dynamics 365 suite of products, Microsoft Flow, PowerApps, Azure App Service, Power BI and more. Microsoft is considered one of the leaders in Software as a Service in the world of business applications, and this organization is at the heart of how business applications are designed and delivered. This team drives the underlying platform that enables the creation of Dynamics 365 applications, PowerApps, and Flows for domains such as Sales, Marketing, Service, Operations, Finance, and Talent. We are building the capabilities needed for the next generation of business productivity software in a mobile and cloud first world. We also enable rich customization on top of our platform, allowing end users, developers, and ISV’s to build completely new solutions or applications to meet the needs of any business. This is an exciting time to join our group and work on something highly strategic to Microsoft! TEAM The Dataverse platform team consists of a motivated, innovative, and diverse set of customer-focused engineers and engineering leaders. We are working on synchronization engine between mail systems and Dataverse which should be able to scale for syncing billions of items supporting millions of customers across the world. You will get lot of challenges and opportunities to build scalable, performant and highly available microservices in cloud.
+
+Microsoft is an equal opportunity employer. Consistent with applicable law, all qualified applicants will receive consideration for employment without regard to age, ancestry, citizenship, color, family or medical care leave, gender identity or expression, genetic information, immigration status, marital status, medical condition, national origin, physical or mental disability, political affiliation, protected veteran or military status, race, ethnicity, religion, sex (including pregnancy), sexual orientation, or any other characteristic protected by applicable local laws, regulations and ordinances. If you need assistance and/or a reasonable accommodation due to a disability during the application process, read more about requesting accommodations.",1651,Microsoft,Hyderābād,10000+ Employees,1975,Information Technology
+1009290614002,Application Developer,"Project Role : Application Developer
+Project Role Description : Design, build and configure applications to meet business process and application requirements.
+Must have skills : Microservices and Light Weight Architecture
+Good to have skills : NA
+Minimum 7.5 year(s) of experience is required
+Educational Qualification : Bachelors in Technology
+
+Summary: As an Application Developer, you will be responsible for designing, building, and configuring applications to meet business process and application requirements using Microservices and Light Weight Architecture. Your typical day will involve collaborating with cross-functional teams, developing and deploying advanced applications, and ensuring the quality and integrity of the applications. Roles & Responsibilities: - Lead the design, development, and deployment of advanced applications using Microservices and Light Weight Architecture. - Collaborate with cross-functional teams to identify and prioritize business requirements and translate them into technical specifications. - Ensure the quality and integrity of the applications by conducting thorough testing and debugging. - Stay updated with the latest advancements in Microservices and Light Weight Architecture, integrating innovative approaches for sustained competitive advantage. Professional & Technical Skills: - Must To Have Skills: Strong experience in Microservices and Light Weight Architecture. - Good To Have Skills: Experience with cloud-based technologies such as AWS or Azure. - Solid understanding of software development life cycle (SDLC) and agile methodologies. - Experience with programming languages such as Java, Python, or Node.js. - Experience with containerization technologies such as Docker or Kubernetes. Additional Information: - The candidate should have a minimum of 7.5 years of experience in Microservices and Light Weight Architecture. - The ideal candidate will possess a strong educational background in computer science or a related field, along with a proven track record of delivering impactful solutions. - This position is based at our Mumbai office.
+
+Bachelors in Technology",4138,Accenture,Mumbai,10000+ Employees,1989,Management & Consulting
+1009290800629,Golang Developer,"Required Skills :
+golang
+sql
+git
+gcp
+microservices
+Job Types: Full-time, Permanent
+Benefits:
+Health insurance",713262,Mobile Programming LLC,Gurgaon,1001 to 5000 Employees,2000,Information Technology
+1009290720264,"Backend Developer, India","At AlgoSec, What you do matters!
+Over 1,800 of the world’s leading organizations trust AlgoSec to help secure their most critical workloads across public cloud, private cloud, containers, and on-premises networks.
+Join our global team, securing application connectivity, anywhere.
+We are hiring an experienced Full Stack Developer to join a strong team in a highly dynamic environment, focusing on AlgoSec's SaaS product.
+Reporting to: R&D Team Lead
+Location: Gurgaon, India
+Direct employment
+Responsibilities:
+
+Requirements:
+
+
+Departmant for website:
+R&D",651944,Algosec,Delhi,201 to 500 Employees,2004,Information Technology
+1009290823758,Java MicroServices Developer,"Job Title: Java Microservices Developers
+Location: Bangalore (Hybrid)
+Mode of Employment: FULLTIME
+Notice Period:
+Maximum 30 days (For FTE) or IMMEDIATE JOINERS
+Description:
+Experience with developing microservices in java.
+Strong experience with Spring and Spring Boot, Spring Batch, Spring Data
+Experience working with one of these NOSQL DB like Mongo, Cassandra, CouchBase etc.
+Experience working on Kafka.
+Experience with Web Services (JSON, REST, JAX-RS, Spring based REST services)
+Strong with Java, Java 8 and JUnit/Mockito
+Strong understanding of Java concurrency, concurrency patterns, experience building thread safe code
+Experience with at least one of the development tools like Git, Gradle, Maven, Sonar, Jenkins, Artifactory etc
+Good understanding of OOP, design patterns and industry best practices
+Agile project experience along with working on Agile tools like JIRA
+Strong written and verbal communication skills
+Optional:
+Experience with DevOps practices and CICD model of development
+Project experience in containerization (Docker/Kubernetes)
+Job Type: Full-time
+Pay: ₹90,000.00 - ₹150,000.00 per month
+Schedule:
+Day shift
+Monday to Friday
+Tipe Lokasi:
+In-person
+Experience:
+Java: 5 years (Preferred)
+Spring Boot, Micro Services: 4 years (Preferred)
+Work Location: In person",0,Torwin Infotech Pvt ltd,India,NA,NA,NA
+1009290677798,Senior Software Engineer - Infrastructure,"NVIDIA is searching for a highly motivated software engineer for the NVIDIA NetQ team that is building a next gen Network management and Telemetry system in cloud using modern design principles at internet scale. NVIDIA NetQ is a highly scalable, modern network operations toolset that provides visibility, troubleshooting, and validation of your Cumulus fabrics in real time. NetQ utilizes telemetry and delivers actionable insights about the health of your data center network, integrating the fabric into your DevOps ecosystem.
+What you'll be doing:
+The person will be part of the team building the SaaS platform for network management taking care of the Application Infrastructure role. The focus would be on efficiency by automating the repetitive workflows and excellent troubleshooting skills.
+What we need to see:",7633,NVIDIA,Bengaluru,10000+ Employees,1993,Information Technology
+1009290680669,Java Technical Manager,"Our Team
+Process Diagnostics And Control (BU): We Develop, Manufacture And Market Cutting-Edge Machine Learning And Computer Vision-Based Metrology And Inspection Products That Are Essential Elements In Wafer Fabrication. By Playing A Significant Role In Enabling The Production Of The Next Generation Of Microchips, Our Expertise Enables Our Customers To Transform Possibilities Into Reality.
+Your Opportunity
+We Are Seeking A Versatile Senior Software Manager To Develop Cutting-Edge Software Solutions For New/Existing Products In Inspection Domain. Inspection Provides The Science, Techniques, And Precision Devices That Are Used To Determine If Parts Or Features Of Chip Have Any Defective Locations. Using Inspection Tool Chipmakers Can Achieve The Required Extreme Inspection Sensitivity, Inspect More Often, Collect More Data, Accelerate Yields, And Lower The Cost Per Wafer. The System Combines Industry-Leading Speed With High Resolution And Advanced Optics That Capture More Data Per Scan.
+Bachelor's Degree
+Core Java
+7 - 10 Years
+Full time
+Assignee / Regular
+Yes, 10% of the Time
+Yes",1139,Applied Materials,Bengaluru,10000+ Employees,1967,Manufacturing
+1009290861494,Senior Java Backend Developer,"Job Description: Java Backend Developer
+We are seeking a highly skilled Backend Developer with expertise in Java, Node.js, and microservices architecture to join our dynamic team. As a Backend Developer, you will play a crucial role in designing, developing, and maintaining scalable and secure backend systems for our product. If you are passionate about creating robust API architectures, leveraging AWS ecosystem, and ensuring the security of our microservices, we encourage you to apply.
+Responsibilities:
+1. Design and develop scalable and fault-tolerant microservices using Java and Node.js
+2. Architect and implement RESTful APIs and event-driven architectures
+3. Utilize AWS services such as EC2, Lambda, API Gateway, and ECS/EKS for deploying and managing microservices
+4. Implement security best practices, including authentication, authorization, and encryption, to protect sensitive data and ensure secure communication between microservices
+5. Optimize backend performance using caching techniques, efficient algorithms, and database indexing
+6. Collaborate with cross-functional teams to design and implement end-to-end features
+7. Participate in code reviews, maintain high code quality standards, and follow best practices for microservices development
+8. Monitor and troubleshoot production issues, ensuring high availability and reliability of the backend systems
+9. Continuously learn and stay updated with the latest technologies, frameworks, and security practices in the microservices landscape
+Skills:
+Strong proficiency in Java and Node.js programming languages
+Extensive experience in designing and implementing microservices architecture
+Deep understanding of RESTful API design principles and best practices
+Hands-on experience with AWS services such as EC2, Lambda, API Gateway, and ECS/EKS
+Expertise in implementing security measures, including authentication (OAuth2, JWT), authorization, and encryption
+Knowledge of event-driven architectures and messaging systems like Apache Kafka or AWS SQS/SNS
+Proficiency in database technologies, including relational databases (MySQL, PostgreSQL) and NoSQL databases (MongoDB, DynamoDB)
+Familiarity with caching mechanisms and tools like Redis or Memcached
+Experience with containerization technologies such as Docker and orchestration platforms like Kubernetes
+Strong understanding of testing methodologies, including unit testing, integration testing, and end-to-end testing
+Knowledge of infrastructure-as-code (IaC) tools like AWS CloudFormation or Terraform
+Familiarity with Agile/Scrum methodologies and collaborative development practices
+Excellent problem-solving, communication, and teamwork skills.
+Job Type: Full-time
+Pay: ₹1,500,000.00 - ₹2,500,000.00 per year
+Benefits:
+Health insurance
+Paid sick time
+Paid time off
+Provident Fund
+Schedule:
+Day shift
+Monday to Friday
+Tipe Lokasi:
+In-person
+Application Question(s):
+When can you join ?
+Education:
+Bachelor's (Preferred)
+Experience:
+Total work: 7 years (Preferred)
+Java: 7 years (Preferred)
+Spring Boot: 5 years (Preferred)
+Node.js: 3 years (Preferred)
+AWS: 3 years (Preferred)
+Work Location: In person",0,Invisia BPO Solution Pvt. Ltd,India,NA,NA,NA
+1009290621181,Sr Software Engineer - Web,"About DMI:
+DMI is a leading global provider of digital services working at the intersection of public and private sectors. With broad capabilities across IT managed services, cybersecurity, cloud migration and application development, DMI provides on-site and remote support to clients within governments, healthcare, financial services, transportation, manufacturing, and other critical infrastructure sectors. DMI has grown to over 2,100+ employees globally and has been continually recognized as a Top Workplace in both regional and national categories.
+About the Opportunity:
+DMI, LLC is seeking a Sr Software Engineer - Web
+
+As a Senior Software Engineer, you’ll work with developers across a team, creating backend APIs, and frontend UI to enhance user experiences and streamline workflows in the construction technology ecosystem. The work involves improving existing APIs, creating new APIs, rolling out a new security model, and creating scalable and resilient services, as well as setting standards and best practices. Duties include peer code review, debugging issues, root cause analysis, and creating solutions that prevent issues from re-occurring.
+
+Qualifications:",449079,DMI,Delhi,1001 to 5000 Employees,2002,Information Technology
+1009290722082,Java Lead - Manager - State Street Global Advisors,"Java Lead - Manager - State Street Global Advisors
+Company profile
+CRD extension projects are customized SSGA solutions and integrating them with CRD system. Charles River (CRD) is a common trading application facilitates the portfolio managers for portfolio construction, order creation and order execution of multiple asset classes. Order creation involves selecting a security and adding order details, and can occur in several places including the Manager Workbench, the blotter, or in an external system. Order execution involves planning how to execute an order and then carrying out the plan. Compliance processing can occur throughout the entire trading process.
+About Business Line
+Fixed Income Portfolio construction system is used by the Portfolio managers to do the pre-trade setup and manage trading lifecycle of the Fixed Income Asset Class. CRD extension projects are customized SSGA solutions and integrating them with CRD system which is a common platform facilitating the portfolio managers for portfolio construction, order creation and order execution of multiple asset classes. Order creation involves selecting a security and adding order details, and can occur in several places including the Manager Workbench, the blotter, or in an external system. Order execution involves planning how to execute an order and then carrying out the plan. Compliance processing can occur throughout the entire trading process.",1911,State Street Corporation,Bengaluru,10000+ Employees,1792,Financial Services
+1009290610025,Software Developer,"Validated experience of 10+ years in software engineering.
+Proficient in Front End Development (VC++, Java EJS, Microservices, Cloud)
+Proficient in broader software design, code quality, and architecture decisions.
+Proficient in leading and advising architecture discussions, design sessions, and code reviews for functional correctness, architectural maintainability, and performance.
+Career Level - IC4
+
+Proficient in developing a long-term technical roadmap for the solution area.
+Proficient in investigating and driving analysis for innovations and technologies.",1737,Oracle,Bengaluru,10000+ Employees,1977,Information Technology
+1009290526844,Software Engineer,"At PayPal (NASDAQ: PYPL), we believe that every person has the right to participate fully in the global economy. Our mission is to democratize financial services to ensure that everyone, regardless of background or economic standing, has access to affordable, convenient, and secure products and services to take control of their financial lives.
+Job Description Summary: What you need to know about the role Global Compliance & Customer Verification Platform builds and maintains the leading state of the art platform that caters to Anti Money Laundering & Tax related regulatory requirements that PayPal has to comply with within most of the 200+ countries that we operate. Our goal is to build a next-gen Reg Tech platform that seamlessly works across multiple geographies delivering KYC & Tax solutions to both PayPal’s direct customers and our adjacencies. Come join us and be part of this Global team that ensures PayPal is compliant with the local and global regulators. Global Compliance & Customer Verification Platform(GCCVP) team is looking for a self-motivated Java Engineer to build and maintain the leading state of the art platform that caters to Anti Money Laundering & Tax related regulatory requirements. Meet our team The Tax Platform Engineering team consists of 8 TMs based in our Bangalore office. We maintain a strong collaboration with our product partners, who are also situated in Bangalore.",9848,PayPal,Bengaluru,10000+ Employees,1998,Information Technology
+1009290308435,Support Engineer II,"2+ years of software development with object oriented language, or 3+ years of technical support experience
+Experience scripting in modern program languages
+Experience troubleshooting and debugging technical systems
+Hands on Springboot and Microservices.
+Experience on Cloud technology and tools preferably AWS
+With over 120 million members, Goodreads is the world’s largest site for readers and book recommendations. As a Top 100 web destination, our mission is to help people find and share books they love. Goodreads members can discover new books by seeing what their friends and members of the community are reading or by using the Goodreads Book Recommendation Engine.
+Come join us and be a part of Amazon family here at Goodreads. At Goodreads, you will be part of a Goodreads Support Engineering team which provides tier-2 and tier-3 production support.
+You will be on a dynamic team that works on a broad range of technologies which impact the back-end infrastructure and operational capabilities of large-scale Goodreads community. As a Support Engineer, you’ll also be working in conjunction with development team on production operations to deploy these new products and manage our infrastructure, associated processes and systems.
+
+The Support Engineer is responsible to solving critical problems for large suite of software applications and services. Your solutions will affect our customers directly! High Impact production issues often require coordination between multiple Development, Product and Support teams, so you get to experience a breadth of impact with various groups. It’ll definitely help for you to be detail-oriented and a skilled problem solver, because you’ll also be helping us to streamline our processes—and automating them where applicable.
+
+Primary responsibilities include troubleshooting, diagnosing and fixing production software issues, developing tools, automations and monitoring solutions, performing software maintenance and configuration, implementing the fix for internally developed code (JAVA and Ruby with Rails), updating, tracking and resolving technical challenges and improving operational excellence and readiness of the systems.
+
+Some of the key job functions
+
+We are open to hiring candidates to work out of one of the following locations:
+
+Chennai, TN, IND",6036,ADCI MAA 15 SEZ,Chennai,10000+ Employees,1994,Information Technology
+1009290540542,Developer,"Overview:
+? 5+ Years? experience in Architecture, Design and Development experience in Legacy Mainframe technologies (Common like COBOL, JCL, DB2, VSAM, CICS and Niche like PL1, IMS DB, etc)
+? Strong experience in PL1, IMS/DB IMS DC and Micro Focus Re-hosting.
+? Strong experience in building Modernization Solutions for Legacy Mainframe Applications and movement to Cloud/, Micro Focus Re-hosting.
+? Strong experience in building and delivering various Modernization disposition solutions like Rehost, Re-engineer, Rewrite, Re-architect, Retire, etc
+? Good experience with On-Prem/Cloud solutions and understanding of CSP and Partner ecosystem
+? Strong understanding of Software Architecture & enterprise framework. Well versed with SOA, Microservices, API, Event driven framework, etc
+? Strong communication and Customer Presentation skills. Ability to engage with the customer, understand problem statement and having intelligent conversations to gather more information and build a solution
+? Able to conceptualize and design applications grounds up based on the current requirements. Create solution architecture documentation, work/feature-breakdown structure document and other related artifacts with deep technical and process details.
+? Well versed with estimation methodology and able to create detailed estimation, resource planning and delivery execution plans
+? Experience in performing Modernization assessments and Proactive Opportunity mining
+? Experience in conceptualizing and building automation tools to expedite delivery
+? Flexibility for short term travel (Domestic/International)
+? Flexibility to work in shifts.",9936,Wipro Limited,Bengaluru,10000+ Employees,1945,Information Technology
+1009290610156,Principal QA Engineer,"As the senior member of team, you will be involved in all phases of the development process. You will lead the design, development, execution, and automation of test plans for a diverse set of system components, including high-volume server applications and cutting-edge user interfaces. Additionally, you will be responsible for defining and implementing our testing strategy to ensure the highest quality standards.
+The ideal candidate will:
+Possess strong proficiency in shaping strategy and solution design.
+Demonstrate excellent written and oral communication skills.
+Exhibit advanced cross-organizational and project management skills.
+Thrive in a highly innovative, fast-paced, evolving, and ambiguous environment.
+Career Level - IC4",1737,Oracle,India,10000+ Employees,1977,Information Technology
+1009290258637,Full Stack Engineer – Backend,"We’re Maropost-India, a 2024 Great Place To Work certified company and a subsidiary of Canada’s 4th fastest-growing tech company as named by Profit 500! Our Software as a Service Marketing Cloud technology provides organizations with a single platform to connect with customers via marketing automation, mass and transactional email, social media, mobile messaging, landing pages, and eCommerce.
+Our platform is used and trusted by thousands of brands worldwide to maximize their revenue. Our unified eCommerce platform empowers thousands of B2B and multi-channel eCommerce businesses, big and small, to achieve more. From online stores, POS terminals, and marketplace connections, to inventory, order management, and shipping, our all-in-one platform connects it all.
+We’re on a mission to build the most technically advanced marketing & eCommerce platform in the world coupled with unsurpassed customer service and support.
+Bottom of Form",994532,Maropost,Mohali,201 to 500 Employees,2011,Information Technology
+1009290260258,Node.js Architect,"Job Description
+Job Title:
+Node.js Architect
+Location:
+Hyderabad, India
+Schedule:
+Full-Time, Permanent
+Team:
+61-590 - Technology - Management
+Department:
+A - Dept HM uses to open req",2242625,DAZN,Hyderābād,1001 to 5000 Employees,2015,Information Technology
+1009290526810,"MTS 1, Software Engineer","At PayPal (NASDAQ: PYPL), we believe that every person has the right to participate fully in the global economy. Our mission is to democratize financial services to ensure that everyone, regardless of background or economic standing, has access to affordable, convenient, and secure products and services to take control of their financial lives.
+Job Description Summary: About PayPal =========== Fueled by a fundamental belief that having access to financial services creates opportunity, PayPal (NASDAQ: PYPL) is committed to democratizing financial services and empowering people and businesses to join and thrive in the global economy. Our open digital payments platform gives PayPal’s users across the globe the confidence to connect and transact in new and powerful ways, whether they are online, on a mobile device, in an app, or in person. Through a combination of technological innovation and strategic partnerships, PayPal creates better ways to manage and move money, and offers choice and flexibility when sending payments, paying or getting paid. Available in more than 200 markets around the world, the PayPal platform, including Braintree, Venmo and Xoom, enables consumers and merchants to receive money in more than 100 currencies, withdraw funds in 56 currencies and hold balances in their PayPal accounts in 25 currencies. PayPal was ranked 69 in America's Most Innovative Companies and ranked 148 in Fortune 500 companies for the year 2023. Life at PayPal =========== We make sure our people are happy, connected, having fun and see the real-life impact of their work while they’re crafting solutions that will bring security, confidence and convenience to individuals and businesses around the world. To know more visit: https://www.paypal.com/us/webapps/mpp/jobs/culture",9848,PayPal,Chennai,10000+ Employees,1998,Information Technology
+1009290610036,Senior/Principal Application Developer,"The Team
+This position is in the My Oracle Support Applications group. My Oracle Support is a mission critical application used by Oracle Customer Support to manage and resolve all customer-initiated requests for different Oracle products. We are investing in building next generation My Oracle Support application using OCI, PaaS and SaaS offerings from Oracle technology and application stack with a goal of enhancing our customers experience.
+We are a group of highly motivated application engineers with expertise across the enterprise application technology stack, working in small agile teams to solve sophisticated and high impact problems.
+Are you passionate about architecting and developing solutions that solve complex business and systems problems by leveraging state-of-the-art technology?
+What you will do",1737,Oracle,Bengaluru,10000+ Employees,1977,Information Technology
+1009290610242,Principal Software Developer,"We're taking on bold challenges and we're looking for an experienced and motivated services, data processing and streaming pipeline developer to help us build and deliver our high-quality, robust, and globally scalable platform supporting Oracle Fusion CDP. If you're passionate about using the latest technologies to deliver best-in-class services and working in a fun, intense environment, where you'll collaborate every day with your team of talented developers, architects, and designers then please apply.
+Who are we?
+Our development teams focus on enabling our customers to solve their unique business challenges by leveraging the power of streaming data platforms. Our developers design solutions that rely on choosing the right tool for the job, often with innovative technologies. We offer a highly collaborative work environment where accountability, innovation, and initiative are valued and best practices, coding standards, and a test driven attitude are leveraged to produce software of the highest quality.",1737,Oracle,Hyderābād,10000+ Employees,1977,Information Technology
+1009290204066,Staff Full-Stack Software Engineer,"Bengaluru, Karnataka
+Engineering /
+Full Time /
+Hybrid
+Greenlight is the leading family fintech company on a mission to help parents raise financially smart kids. We proudly serve more than 6 million parents and kids with our award-winning banking app for families. With Greenlight, parents can automate allowance, manage chores, set flexible spend controls, and invest for their family’s future. Kids and teens learn to earn, save, spend wisely, and invest.
+
+At Greenlight, we believe every child should have the opportunity to become financially healthy and happy. It’s no small task, and that’s why we leap out of bed every morning to come to work. Because creating a better, brighter future for the next generation depends on it.",1000771,Greenlight,Bengaluru,1 to 50 Employees,2005,Information Technology
+1009290035327,Software Engineer,"About NCR Atleos
+NCR Atleos, headquartered in Atlanta, is a leader in expanding financial access. Our dedicated 20,000 employees optimize the branch, improve operational efficiency and maximize self-service availability for financial institutions and retailers across the globe.
+Key Responsibilities:
+Collaborate with Business for new enhancement/change in application.
+Work with Operation team to troubleshoot/fix Production issue.
+Use GitHub / GitHub Actions to create rapid deployment pipelines.
+Collaborate with cross-functional teams to define technical requirements and deliver solutions that elevate user experiences.",4212,NCR Atleos,Gurgaon,10000+ Employees,1884,Information Technology
+1009289888894,Golang Developer,"About the role:
+We are looking for a GoLang developer who possesses a good understanding of how best to leverage and exploit the language’s unique paradigms, idioms, and syntax. Your primary focus will be on developing Go packages and programs that are scalable and maintainable. You will ensure that these Go packages and programs are well documented and have reasonable test coverage. You will coordinate with the rest of the team working on different layers of the infrastructure. A commitment to collaborative problem solving, sophisticated design, and quality product is essential.
+
+Responsibilities:
+1. Develop microservices and tools that provide common support for scalable and highly available software system.
+Work closely with design teams to support their use of the platform to deliver complete solutions to customer.
+Participate in all phases of an agile development cycle – plan, design, implement, review, test, deploy, document, and training.
+Self-starter, willing to learn new technologies.
+Troubleshoot and resolve customer issues.
+Strive to make continuous improvement.",3076281,Totality Corp,Remote,51 to 200 Employees,2017,Information Technology
+1009289866787,React Js,"Works independently under limited supervision and applies knowledge of subject matter in Applications Development. Possess sufficient knowledge and skills to effectively deal with issues, challenges within field of specialization to develop simple applications solutions. Second level professional with direct impact on results and outcome
+Together, as owners, let’s turn meaningful insights into action.
+
+Life at CGI is rooted in ownership, teamwork, respect and belonging. Here, you’ll reach your full potential because…
+
+You are invited to be an owner from day 1 as we work together to bring our Dream to life. That’s why we call ourselves CGI Partners rather than employees. We benefit from our collective success and actively shape our company’s strategy and direction.
+
+Your work creates value. You’ll develop innovative solutions and build relationships with teammates and clients while accessing global capabilities to scale your ideas, embrace new opportunities, and benefit from expansive industry and technology expertise.
+
+You’ll shape your career by joining a company built to grow and last. You’ll be supported by leaders who care about your health and well-being and provide you with opportunities to deepen your skills and broaden your horizons.
+
+Come join our team—one of the largest IT and business consulting services firms in the world.",8452,CGI,Pune,10000+ Employees,1976,Management & Consulting
+1009289867916,Backend Developer,"Published
+May 22, 2024
+Location
+Noida, India
+Category
+Default
+Job Type
+Full-time
+Experience
+3-7
+DESCRIPTION",2257504,NexGen IOT Solutions,Noida,201 to 500 Employees,2017,Information Technology
+1009289879705,Associate,"About Northern Trust:
+
+Northern Trust, a Fortune 500 company, is a globally recognized, award-winning financial institution that has been in continuous operation since 1889.
+
+Northern Trust is proud to provide innovative financial services and guidance to the world's most successful individuals, families, and institutions by remaining true to our enduring principles of service, expertise, and integrity. With more than 130 years of financial experience and over 22,000 partners, we serve the world's most sophisticated clients using leading technology and exceptional service.
+
+Project Overview:
+
+a cybersecurity discipline focused on managing user identities and access permission on user network
+
+2-8
+
+:
+
+
+As a Northern Trust partner, greater achievements await. You will be part of a flexible and collaborative work culture in an organization where financial strength and stability is an asset that emboldens us to explore new ideas.
+
+Movement within the organization is encouraged, senior leaders are accessible, and you can take pride in working for a company committed to assisting the communities we serve! Join a workplace with a greater purpose.
+
+We'd love to learn more about how your interests and experience could be a fit with one of the world's most admired and sustainable companies! Build your career with us and apply today. #MadeForGreater
+
+
+
+Northern Trust is committed to working with and providing reasonable accommodations to individuals with disabilities. If you need a reasonable accommodation for any part of the employment process, please email our HR Service Center at MyHRHelp@ntrs.com .
+
+We hope you're excited about the role and the opportunity to work with us. We value an inclusive workplace and understand flexibility means different things to different people.
+
+Apply today and talk to us about your flexible working requirements and together we can achieve greater.",1710,Northern Trust,India,10000+ Employees,1889,Financial Services
+1009289853225,Production Support Lead,"Production Support Lead
+Job ID: R0330798
+Full/Part-Time: Full-time
+
+Regular/Temporary: Regular
+Listed: 2024-05-22
+
+Location: Bangalore
+
+Position Overview
+Job Title- Production Support Lead",3150,Deutsche Bank,Bengaluru,10000+ Employees,1870,Financial Services
+1009290028326,Java Developer,"Job Information
+Work Experience
+4-6 years
+Industry
+IT Services
+Salary
+INR 1400000 Per Year
+City
+Gurgaon Kty.
+Province",1541014,Redian Software,India,51 to 200 Employees,2016,Information Technology
+1009289808467,Senior Spring Boot Developer,"Spring Boot Developers Required in Kolkata
+Must be Willing to Move to Kolkata
+Senior Positions available
+Must have microservices experience
+Banking Experience Preferable
+Responsibilities:
+Liaise with fellow developers and designers to code in line with Tech Specs and Requirements.
+Implementing microservices which use the spring boot framework.
+Working in compliance with the full Software Development Life Cycle.
+Connecting microservices to interact with databases.
+Connecting with messaging solutions such as Kafka.
+Identifying and finding solutions to bugs.
+Write adequate test cases to verify design requirements are being met.
+Create well written documentation for the individual microservices.
+Qualifications and Skills:
+3-5 years of hands on experience in Java back-end development and skills with Spring-boot framework
+Experience in building industry standard coding best Practices.
+Experience in messaging platforms like Kafka, RabbitMQ etc
+Experience in AWS Cloud
+Knowledge in Version Control management like GIT.
+Proficient in building and running Unit Test Cases
+Knowledge in working with SQL and No-SQL databases
+Excellent communication skills and an ability to work in a team
+Role: Full Stack Developer
+Industry Type: IT Services & Consulting
+Department: Engineering - Software & QA
+Employment Type: Full Time,
+Permanent Role
+Job Types: Full-time, Permanent
+Pay: ₹800,000.00 - ₹2,000,000.00 per year
+Benefits:
+Flexible schedule
+Schedule:
+Day shift
+Monday to Friday
+Weekend availability
+Application Question(s):
+Will u be able to relocate to Kolkata?
+Education:
+Bachelor's (Preferred)
+Experience:
+Spring Boot: 7 years (Preferred)
+total work: 10 years (Preferred)",0,Excellanto Ventures Pvt Ltd,Calcutta,NA,NA,NA
+1009289992486,Software Developer Backend (m/f/d),"We are an experienced and innovative European based company, creating a brand-new product for the B2C/B2B market, carried out on desktop, tablet and mobile devices.
+We are now searching for a very experienced Senior Backend Developer with at least 10 Years of experience in Software Development and/or Backend-Architecture.
+As a Backend Developer, you will be managing the API’s and exchange of data between the server and users. Your focus will be on architecture and the development of all server-side logic, maintenance, and definition of database, ensuring high performance and responsiveness to requests from the front-end.
+Main Tasks
+Design backend architecture for multi tenancy and multilanguage solutions
+Develop the backend code using Spring Boot",3191353,MSC Munich Strategy Consulting GmbH,Remote,Unknown,--,--
+1009290610183,Principal Software Developer,"About CrowdTwist + Oracle
+We provide the most comprehensive omni-channel loyalty & analytics SaaS platform for industry leading brands. We have grown from being a small startup to a respected platform with hundreds of millions of users and billions of interactions. After our recent acquisition by Oracle, we are looking to write the next chapter in user growth and scale. We're relaxed, experienced, hard driving and are experiencing explosive growth. We power the loyalty offerings for many of the world’s top brands such as Lego, Disney, Weight Watchers, Marvel Comics, Beall's, AMC’s The Walking Dead, and Zumiez. We're relaxed, experienced, hard driving, changing our industry and looking for smart people like yourself to help tackle tough technical challenges. You can read more about us here
+About the Opportunity
+We are seeking a talented Principal Software Engineer for our growing team in Bengaluru. Our cloud-first SaaS platform is built using Distributed Microservices Architecture, on Linux, Java, Vertx, Oracle, MySQL, Angular/React/APEX. we use RabbitMQ as our messaging backbone and NoSQL databases like Redis We need our engineers to be versatile, display leadership qualities and be enthusiastic to take on new problems across the full-stack as we continue to push technology forward. At over one million lines of code, you’ll be working with large, highly-trafficked, scalable applications. Quality and high availability is of extreme importance to us, so we're looking for a professional engineer that takes a pragmatic and passionate approach to technology to solve problems and keeps the application uptime high.",1737,Oracle,Bengaluru,10000+ Employees,1977,Information Technology
+1009290034450,"1 - Senior Software Engineer - Java, Springboot, Microservices, Docker, Kubenetes, Linux","Minimum Required Experience : 5 years
+Full Time
+Skills
+Microservices
+Kubernetes
+Linux
+Spring Boot
+Java
+Docker
+Description
+Position Title: Senior Software Engineer",5988578,NeST Digital,Bengaluru,1001 to 5000 Employees,1998,Information Technology
+1009289797526,Senior Software Engineer,"About the Role
+Wells Fargo Data Solutions and Services team is seeking a hands-on experienced Lead Java full stack developer who can lead complex technology initiatives including those that are companywide with broad impact. The Job responsibilities include gathering and analyzing requirements and coming up with a technical solution that meets business requirements. The position will be hands-on on the Product Development, Vendor Tools implementation, POCs, upkeep of tools and makes sure deliveries of quality.
+In this role, you will:
+Lead moderately complex initiatives and deliverables within technical domain environments
+Contribute to large scale planning of strategies
+Experience in working in Agile projects
+
+
+28 May 2024
+
+
+
+
+At Wells Fargo, we believe in diversity, equity and inclusion in the workplace; accordingly, we welcome applications for employment from all qualified candidates, regardless of race, color, gender, national origin, religion, age, sexual orientation, gender identity, gender expression, genetic information, individuals with disabilities, pregnancy, marital status, status as a protected veteran or any other status protected by applicable law.
+
+Employees support our focus on building strong customer relationships balanced with a strong risk mitigating and compliance-driven culture which firmly establishes those disciplines as critical to the success of our customers and company. They are accountable for execution of all applicable risk programs (Credit, Market, Financial Crimes, Operational, Regulatory Compliance), which includes effectively following and adhering to applicable Wells Fargo policies and procedures, appropriately fulfilling risk and compliance obligations, timely and effective escalation and remediation of issues, and making sound risk decisions. There is emphasis on proactive monitoring, governance, risk identification and escalation, as well as making sound risk decisions commensurate with the business unit's risk appetite and all risk and compliance program requirements.
+
+Candidates applying to job openings posted in US: All qualified applicants will receive consideration for employment without regard to race, color, religion, sex, sexual orientation, gender identity, national origin, disability, status as a protected veteran, or any other legally protected characteristic.
+
+Candidates applying to job openings posted in Canada: Applications for employment are encouraged from all qualified candidates, including women, persons with disabilities, aboriginal peoples and visible minorities. Accommodation for applicants with disabilities is available upon request in connection with the recruitment process.
+
+
+
+To request a medical accommodation during the application or interview process, visit Disability Inclusion at Wells Fargo .
+
+
+
+Wells Fargo maintains a drug free workplace. Please see our Drug and Alcohol Policy to learn more.",8876,Wells Fargo,Hyderābād,10000+ Employees,1852,Financial Services
+1009290023463,Software Development Engineer,"Project Role : Software Development Engineer
+Project Role Description : Analyze, design, code and test multiple components of application code across one or more clients. Perform maintenance, enhancements and/or development work.
+Must have skills : Kubernetes
+Good to have skills : Amazon Web Services (AWS), DevOps, AWS Glue
+Minimum 3 year(s) of experience is required
+Educational Qualification : 15 years eduaction
+
+Summary: As a Software Development Engineer with expertise in Kubernetes, you will be responsible for analyzing, designing, coding, and testing multiple components of application code across one or more clients. Your typical day will involve performing maintenance, enhancements, and/or development work using Kubernetes and associated technologies. Roles & Responsibilities: - Design, develop, and maintain Kubernetes-based applications and services. - Collaborate with cross-functional teams to identify and resolve technical issues related to Kubernetes and associated technologies. - Develop and maintain automated deployment pipelines using Kubernetes and DevOps tools. - Ensure the scalability, availability, and security of Kubernetes-based applications and services. - Stay updated with the latest advancements in Kubernetes and associated technologies, integrating innovative approaches for sustained competitive advantage. Professional & Technical Skills: - Must To Have Skills: Expertise in Kubernetes. - Good To Have Skills: Experience with Amazon Web Services (AWS), DevOps, and AWS Glue. - Strong understanding of containerization and microservices architecture. - Experience with container orchestration tools such as Docker Swarm and Apache Mesos. - Experience with infrastructure as code tools such as Terraform and CloudFormation. - Solid grasp of Linux operating system and shell scripting. Additional Information: - The candidate should have a minimum of 3 years of experience in Kubernetes. - The ideal candidate will possess a strong educational background in computer science or a related field, along with a proven track record of delivering impactful solutions using Kubernetes. - This position is based at our Bengaluru office.
+
+15 years eduaction",4138,Accenture,Bengaluru,10000+ Employees,1989,Management & Consulting
+1009290112386,Sr. Java Developer,"Job description
+Job Title: Java Developer
+Location: Pune,Hyderabad,Banaglore
+Salary: 14-15 LPA
+Experience: 6+ years
+About the Role:
+We are seeking a talented Java Developer to join our team on a contract basis for 11 months. The ideal candidate will have extensive experience in Java development, particularly in Spring Boot and Microservices architecture. This role offers an exciting opportunity to work on challenging projects and contribute to the growth of our organization.
+Key Responsibilities:
+Develop high-quality software solutions using Java and related technologies.
+Design, implement, and maintain efficient, reusable, and reliable Java code.
+Collaborate with cross-functional teams to define, design, and ship new features.
+Ensure the performance, quality, and responsiveness of applications.
+Troubleshoot issues, fix bugs, and improve application performance.
+Stay updated on emerging technologies and best practices in Java development.
+Requirements:
+Bachelor's degree in Computer Science, Engineering, or related field.
+5+ years of experience in Java development.
+Strong proficiency in Spring Boot and Microservices architecture.
+Experience with RESTful web services and API development.
+Familiarity with relational databases such as MySQL or PostgreSQL.
+Excellent problem-solving and analytical skills.
+Ability to work independently and as part of a team.
+Good communication and interpersonal skills.
+Flexibility to work remotely with occasional visits to the office for equipment collection and business meetings.
+Benefits:
+Competitive salary package.
+Opportunity to work on cutting-edge technologies.
+Flexible work environment with remote work options.
+Collaborative and supportive team culture.
+If you meet the above requirements and are passionate about Java development, we would love to hear from you. Please apply with your updated resume and portfolio.
+Job Types: Full-time, Permanent
+Pay: ₹583,151.75 - ₹1,503,029.75 per year
+Benefits:
+Cell phone reimbursement
+Health insurance
+Internet reimbursement
+Provident Fund
+Work from home
+Schedule:
+Day shift
+Fixed shift
+Monday to Friday
+Morning shift
+Education:
+Bachelor's (Preferred)
+Experience:
+total work: 6 years (Required)
+Java: 4 years (Required)
+Microservices: 3 years (Required)
+Work Location: In person",0,Sureminds Solutions Pvt. Ltd.,India,NA,NA,NA
+1009290023382,Full Stack Engineer,"Project Role : Full Stack Engineer
+Project Role Description : Responsible for developing and/or engineering the end-to-end features of a system, from user experience to backend code. Use development skills to deliver innovative solutions that help our clients improve the services they provide. Leverage new technologies that can be applied to solve challenging business problems with a cloud first and agile mindset.
+Must have skills : Spring Boot
+Good to have skills : NA
+Minimum 3 year(s) of experience is required
+Educational Qualification : Minimum having 15 years of education
+
+Summary: As a Full Stack Engineer, you will be responsible for developing and engineering end-to-end features of a system using Spring Boot. Your typical day will involve working on user experience and backend code, delivering innovative solutions to improve client services with a cloud-first and agile mindset. Roles & Responsibilities: - Design and develop high-quality software solutions using Spring Boot, ensuring scalability, performance, and maintainability. - Collaborate with cross-functional teams to understand business requirements and translate them into technical solutions. - Develop and maintain RESTful APIs and microservices using Spring Boot and related technologies. - Implement front-end solutions using modern web technologies such as Angular, React, or Vue.js. - Ensure code quality by writing automated tests and performing code reviews. Professional & Technical Skills: - Must To Have Skills: Strong experience in Spring Boot. - Good To Have Skills: Experience with Angular, React, or Vue.js. - Solid understanding of RESTful APIs and microservices architecture. - Experience with database technologies such as MySQL, PostgreSQL, or MongoDB. - Experience with cloud platforms such as AWS, Azure, or GCP. - Strong understanding of software development principles and best practices. Additional Information: - The candidate should have a minimum of 3 years of experience in Spring Boot. - The ideal candidate will possess a strong educational background in computer science or a related field, along with a proven track record of delivering high-quality software solutions. - This position is based at our Bengaluru office.
+
+Minimum having 15 years of education",4138,Accenture,Bengaluru,10000+ Employees,1989,Management & Consulting
+1009290082096,Sr Software Engineer,"What's the role?:
+As a Senior Software Engineer in the Foundation Engineering you will work self-sustained in an agile team. Your responsibilities will cover developing, extending, and maintaining tool and services that process data for HERE’s global databases.
+
+Your Tasks
+Implement tools to enhance both automated and semi-automated map data processing, involving backend/service-based software stacks, but also dashboard components for data tracking and analysis
+Own and drive technical excellence and in-depth solutions in an innovative and fast-paced environment
+Apply and extended CI/CD tools and execute end-2-end ownership of your developed software stack, including DevOps and testing aspects
+Who are you?:
+
+
+Who are we?:",753677,HERE Technologies,Mumbai,5001 to 10000 Employees,1984,Information Technology
+1009289809802,Intermediate Application Developer - Angular & Java,"Explore your next opportunity at a Fortune Global 500 organization. Envision innovative possibilities, experience our rewarding culture, and work with talented teams that help you become better every day. We know what it takes to lead UPS into tomorrow—people with a unique combination of skill + passion. If you have the qualities and drive to lead yourself or teams, there are roles ready to cultivate your skills and take you to the next level.
+Job Description:
+Job Description
+Moving our world forward by delivering what matters! UPS is a company with a proud past and an even brighter future. Our values define us. Our culture differentiates us. Our strategy drives us. At UPS we are customer first, people led and innovation driven. UPS’s India based Technology Development Centers will bring UPS one step closer to creating a global technology workforce that will help accelerate our digital journey and help us engineer technology solutions that drastically improve our competitive advantage in the field of Logistics.
+
+
+
+
+Permanent",3012,UPS India,Chennai,10000+ Employees,1907,Transportation & Logistics
+1009289851943,Software Engineer - Dot Net,"Equifax is seeking creative, high-energy and driven DOTNET software engineers with hands-on development skills to work on a variety of meaningful projects. Our software engineering positions provide you the opportunity to join a team of talented engineers working with leading-edge technology. You are ideal for this position if you are a forward-thinking, committed, and enthusiastic software engineer who is passionate about technology.
+
+What you’ll do
+Perform general application development activities, including unit testing, code deployment to development environment and technical documentation.
+Work on one or more projects, making contributions to unfamiliar code written by team members.",232,Equifax,Thiruvananthapuram,10000+ Employees,1899,Management & Consulting
+1009290039998,Manager,"Genpact (NYSE: G) is a global professional services and solutions firm delivering outcomes that shape the future. Our 125,000+ people across 30+ countries are driven by our innate curiosity, entrepreneurial agility, and desire to create lasting value for clients. Powered by our purpose - the relentless pursuit of a world that works better for people - we serve and transform leading enterprises, including the Fortune Global 500, with our deep business and industry knowledge, digital operations services, and expertise in data, technology, and AI.
+Inviting applications for the role of Assistant Manager, Principal Consultant, Software Development, Product Development
+Genpact Commercial Banking GRADE is an industry-leading, top-notch engineering-driven software solution for financial institutions looking to streamline their current commercial lending and leasing processes. We work closely with our clients to re-engineer outdated, inefficient business processes and utilize GRADE, our Enterprise Credit Underwriting and Management Platform, to allow straight-through processing. Our clients benefit from configurable screens, workflows, rules that reflect their business processes, and built-in compliance features such as Reg B and Know Your Customer.",42613,Genpact,Jaipur,10000+ Employees,1997,Information Technology
+1009289998476,Software Engineer III,"Job Title: Software Engineer III
+Location: Hyderabad
+Introduction to EA & India Centre: Electronic Arts Inc. is a global interactive entertainment software company. EA develops interactive software worldwide for video game systems, personal computers, wireless devices, and the Internet.
+You will report to Senior Manager, Engineering
+For this role, you will report to Director, Software Engineering
+Opportunity Ahead
+EA Hyderabad has an opportunity for a Software Engineer III. As a SE3, you will be one of the senior engineers of the central engineering team with responsibilities to design high throughput world class services at global scale for our next-generation games. You'll build platform capabilities handling several hundred-thousand requests per second and promoting the player engagement of many of the industry’s most popular titles. If you like solving complex computing problems, are a passionate team player and excel this is a great opportunity for you.
+
+
+We are a global team of creators, storytellers, technologists, experience originators, innovators and so much more. We believe amazing games and experiences start with teams as diverse as the players and communities we serve. At Electronic Arts, the only limit is your imagination.",1628,Electronic Arts,Hyderābād,10000+ Employees,1982,Media & Communication
+1009289912228,Senior Software Engineer - Parametric,"Senior Software Engineer - Parametric
+Job Number:
+3252287
+POSTING DATE: May 22, 2024
+PRIMARY LOCATION: Non-Japan Asia-India-Maharashtra-Mumbai (MSA)
+EDUCATION LEVEL: Refer to Position Description
+JOB: Development
+EMPLOYMENT TYPE: Full Time
+JOB LEVEL: Senior Manager
+DESCRIPTION
+ABOUT MORGAN STANLEY
+Morgan Stanley is a leading global financial services firm providing a wide range of investment banking, securities, wealth management and investment management services. With offices in more than 41 countries, the Firm's employees serve clients worldwide including corporations, governments, institutions and individuals. For further information about Morgan Stanley, please visit www.morganstanley.com.",2282,Morgan Stanley,Mumbai,10000+ Employees,1935,Financial Services
+1009289840182,Senior Java Developer,"Quest Global is an organization at the forefront of innovation and one of the world’s fastest growing engineering services firms with deep domain knowledge and recognized expertise in the top OEMs across seven industries. We are a twenty-five-year-old company on a journey to becoming a centenary one, driven by aspiration, hunger and humility.
+We are looking for humble geniuses, who believe that engineering has the potential to make the impossible, possible; innovators, who are not only inspired by technology and innovation, but also perpetually driven to design, develop, and test as a trusted partner for Fortune 500 customers.
+As a team of remarkably diverse engineers, we recognize that what we are really engineering is a brighter future for us all. If you want to contribute to meaningful work and be part of an organization that truly believes when you win, we all win, and when you fail, we all learn, then we’re eager to hear from you.
+The achievers and courageous challenge-crushers we seek, have the following characteristics and skills:
+
+
+
+
+
+
+(To perform this job successfully, an individual must be able to perform each essential duty satisfactorily.)
+
+
+(The physical demands described here are representative of those that must be met by an employee . Reasonable accommodations may be made to enable individuals with disabilities to perform the essential functions.)
+The candidate would be required to work and support the application development activities from the following location regulalry",432989,Quest Global,Bengaluru,10000+ Employees,1997,Information Technology
+1009289990419,Solution Architect/Senior Engineer GBT,"Job Title
+Solution Architect/Senior Engineer/ Lead developer
+
+Location (s)
+India
+
+Years of Experience
+5+ years
+
+Job Description
+â€¢ 5+ years of experience in java based technologies.
+â€¢ Extensive understanding of Java based Web-service technologies and knowledge of server-side design patterns, object oriented design etc.
+â€¢ Work experience in Spring, Spring boot, Rest based web services, Java.
+â€¢ Deep understanding of distributed systems and demonstrated ability to develop and support large-sized internet-scale software systems.
+â€¢ Ability to quickly pick up new technologies, languages, tools with ease.
+â€¢ Team player who collaborates and incorporates feedback from all relevant stakeholders.
+â€¢ Good analytical, logical reasoning and Problem solving skills.
+â€¢ Exposure and knowledge to Agile concepts and TDD.
+â€¢ Exposure to NoSql databases, Cloud computing, Microservices, DevOps concepts is an advantage.",191970,IBS Software,Kerala,1001 to 5000 Employees,1997,Information Technology
+1009290058016,Development Manager Senior,"Position Type :
+Full time
+Type Of Hire :
+Experienced (relevant combo of work and education)
+Education Desired :
+Bachelor of Computer Engineering
+Travel Percentage :
+0%
+Senior Development Manager - Bangalore - (Java Angular) - 15+ years
+Job Description
+Are you curious, motivated, and forward-thinking? At FIS you’ll have the opportunity to work on some of the most challenging and relevant issues in financial services and technology. Our talented people empower us, and we believe in being part of a team that is open, collaborative, entrepreneurial, passionate and above all fun.",313114,FIS Global,Bengaluru,10000+ Employees,1968,Financial Services
