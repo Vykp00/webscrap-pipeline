@@ -1,19 +1,21 @@
-from selenium.common.exceptions import NoSuchElementException, ElementNotInteractableException
-from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.common.by import By
-from selenium import webdriver
-
-import time
-import pandas as pd
-import requests
-from random import randint
-import re
+# ******************************************************************************
+#  Copyright (c) 2024. Vy Kauppinen (VyKp00)
+# ******************************************************************************
 
 # For Fake User Agent
 import os
+import re
+import time
+from random import randint
+
 import dotenv
-from selenium.webdriver.support.ui import WebDriverWait
+import requests
+from selenium import webdriver
+from selenium.common.exceptions import NoSuchElementException, ElementNotInteractableException
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.ui import WebDriverWait
 
 dotenv.load_dotenv(dotenv_path='./.env')
 
@@ -61,14 +63,15 @@ def fetch_company_id(data):
         company_id = match.group(1)
         print(f'CompanyId: {company_id}')
     except:
-        print('CompanyId not found')
-        company_id = 'None'
+        print('ERROR: CompanyId not found')
+        company_id = 'NA'
 
     return company_id
 
 
-def get_jobs(url, num_jobs, verbose, slp_time):
-    '''Gathers jobs as a dataframe, scraped from Glassdoor'''
+def get_jobs(url, verbose, slp_time, data_pipeline):
+    '''Gathers jobs, scraped from Glassdoor'''
+    print("Scraping start.....................")
 
     # ****** Initializing the webdriver ********
     # Get Random User Agent
@@ -101,42 +104,55 @@ def get_jobs(url, num_jobs, verbose, slp_time):
 
     # We get url from the list of urls
     driver.get(url)
-    jobs = []
+    #jobs = []
+
+    # The set of collected jobs to prevent duplicates
+    collected_job_ids = set()
 
     # Click Accept Cookies
-    # time.sleep(5)
-    cookie_btn = WebDriverWait(driver, 5).until(EC.element_to_be_clickable(
+    # Wait for the page to load
+    time.sleep(slp_time)
+
+    cookie_btn = WebDriverWait(driver, 10).until(EC.element_to_be_clickable(
         (By.CSS_SELECTOR, 'button#onetrust-accept-btn-handler')))
     cookie_btn.click()
-    # time.sleep(2)
 
-    # TODO: Uncommon after testing
-    '''
     # Get Total of Job Number
-    title_text = driver.find_element(By.TAG_NAME, 'title').text
-    # Extract the number part
-    number_str = re.sub(r'[^\d]', '', title_text.split()[0])
-    num_jobs = int(number_str)
-    '''
+    time.sleep(1)
+    try:
+        title_text = driver.find_element(By.CSS_SELECTOR, 'h1[data-test="search-title"]').text
+        print(title_text)
+    except NoSuchElementException:
+        title_text = None
+        print("ERROR: Cannot find title")
+        pass
+
+
+    if title_text:
+        # Ensure title_text is not empty and contains at least one space
+        if len(title_text.split()) > 0:
+            # Extract the number part
+            number_str = re.sub(r'[^\d]', '', title_text.split()[0])
+            if number_str:
+                real_num_jobs = int(number_str)
+                num_jobs = real_num_jobs
+                print("Total of search job results: {}".format(real_num_jobs))
+            else:
+                print("No numeric value found in the title text")
+        else:
+            print("Title text does not contain the expected format")
+    else:
+        num_jobs = 50
+        print("Title text is None or empty. Use default num_jobs as 50")
 
     # Either Define a fix number of job or collect all
-    while len(jobs) < num_jobs:  # If true, should be still looking for new jobs.
+    while len(collected_job_ids) < num_jobs:  # If true, should be still looking for new jobs.
 
         # Let the page load. Change this number based on your internet speed.
         # Or, wait until the webpage is loaded, instead of hardcoding it.
         time.sleep(slp_time)
 
         # Test for the "Sign Up" prompt and get rid of it.
-        '''
-        try:
-            driver.find_element(By.CSS_SELECTOR, 'body > div.ModalContainer > div.Modal > div.ContentAndBottomSection '
-                                                 '> div.ContentSection > div.closeButtonWrapper').click()
-            print('Sign up form closed')
-        except ElementClickInterceptedException:
-            print('Sign up form failed to close')
-            pass
-        '''
-
         time.sleep(.1)
 
         try:
@@ -151,9 +167,22 @@ def get_jobs(url, num_jobs, verbose, slp_time):
         job_cards = driver.find_elements(By.CSS_SELECTOR, 'ul[aria-label="Jobs List"] li[data-test="jobListing"]')
         # each job cards have a hyperlink to render the full job card on the right panel
         for job_card in job_cards:
+            # This is why we select li attribute. Because it contains all id
+            # Fetch the job's id and cross-checking with collected ones
+            # NOTE: THIS IS ONLY CHECK WHEN THIS FUNCTION RUN. UNLIKE DATABASE CHECK
+            try:
+                job_id = job_card.get_attribute('data-jobid')
+            except:
+                print('ERROR: Cannot find job ID. Something is wrong!!!')
+                continue
 
-            print("Progress: {}".format("" + str(len(jobs)) + "/" + str(num_jobs)))
-            if len(jobs) >= num_jobs:
+            # If job id exists already, skip it
+            if job_id in collected_job_ids:
+                print('Job Id Has Been Scraped. Drop This: {}'.format(job_id))
+                continue
+
+            print("---------Progress: {}----------".format("" + str(len(collected_job_ids)) + "/" + str(num_jobs)))
+            if len(collected_job_ids) >= num_jobs:
                 break
 
             # Find the job button in the job card
@@ -176,7 +205,8 @@ def get_jobs(url, num_jobs, verbose, slp_time):
                 print("Click Div_card Failed")
                 pass
 
-            time.sleep(1)
+            # Wait for the page to load
+            time.sleep(2)
             collected_successfully = False
 
             # SomeTimes Sign-up Pop-up open here too
@@ -185,6 +215,20 @@ def get_jobs(url, num_jobs, verbose, slp_time):
                 print(' Sign up x out worked')
             except NoSuchElementException or ElementNotInteractableException:
                 print(' Sign up x out failed')
+                pass
+
+            # Sometimes the Show More button doesn't show
+            try:
+                # Click 'Show More' Button to expands
+                show_more_btn = WebDriverWait(driver, 4).until(
+                    EC.element_to_be_clickable(
+                        (By.XPATH,
+                         '//*[@id="app-navigation"]/div[3]/div[2]/div[2]/div/div[1]/section/div[2]/div[2]/button[@aria-expanded="false"]')))
+                show_more_btn.click()
+                time.sleep(2)
+                print('-------Click Show More Worked----------')
+            except:
+                print('------Show More Button Click Failed Or Disappear--------')
                 pass
 
             while not collected_successfully:
@@ -197,19 +241,22 @@ def get_jobs(url, num_jobs, verbose, slp_time):
 
                     # Make it a bit human. Click on the box
                     WebDriverWait(driver, 10).until(EC.element_to_be_clickable(job_detail)).click()
-                    # This is why we select li attribute. Because it contains all id
-                    job_id = job_card.get_attribute('data-jobid')
+
+                    print("Click Job Detailed Work")
 
                     # Filter company_id from data-brandviews
                     meta_data_raw = job_card.get_attribute('data-brandviews')
                     company_id = fetch_company_id(meta_data_raw)
+                    print('Company ID done')
 
                     # Company name is in the first h4
                     company_name = job_detail.find_element(By.TAG_NAME, 'h4').text
-                    print('Name Done')
+                    print('Comp Name done')
+
                     # Find the job location
                     location = job_detail.find_element(By.CSS_SELECTOR, 'div[data-test="location"]').text
                     print('Location Done')
+
                     # Job title is in the first h1 element
                     job_title = job_detail.find_element(By.CSS_SELECTOR, 'h1[aria-hidden="false"]').text
                     print('Job Title Done')
@@ -217,6 +264,10 @@ def get_jobs(url, num_jobs, verbose, slp_time):
                     # Because the description have <p> and <ul>. Fetch all raw content atm
                     job_description = job_detail.find_element(By.XPATH, 'section/div[2]/div[1]').text
                     print('Job Description Done')
+
+                    # Get job relative url to recheck data easily
+                    job_url = job_card.find_element(By.CSS_SELECTOR, 'a[data-test="job-link"]').get_attribute('href')
+                    print('URL Done')
                     collected_successfully = True
                 except:
                     time.sleep(2)
@@ -230,6 +281,7 @@ def get_jobs(url, num_jobs, verbose, slp_time):
                 print("Job Description: {}".format(job_description[:500]))
                 print("Company Name: {}".format(company_name))
                 print("Location: {}".format(location))
+                print("Job URL: {}".format(job_url))
 
             # ****************** Company Overview Tab *******************
             # clicking on this:
@@ -243,24 +295,24 @@ def get_jobs(url, num_jobs, verbose, slp_time):
                     company_size = company_card.find_element(By.CSS_SELECTOR,
                                                              'div > div > div:nth-child(1) > div').text
                 except NoSuchElementException:
-                    company_size = -1
+                    company_size = 'NA'
 
                 try:
                     company_founded = company_card.find_element(By.CSS_SELECTOR,
                                                                 'div > div > div:nth-child(2) > div').text
                 except NoSuchElementException:
-                    company_founded = -1
+                    company_founded = 'NA'
 
                 try:
                     company_sector = company_card.find_element(By.CSS_SELECTOR,
                                                                'div > div > div:nth-child(5) > div').text
                 except NoSuchElementException:
-                    company_sector = -1
+                    company_sector = 'NA'
 
             except NoSuchElementException:  # Rarely, some job postings do not have the "Company" tab.
-                company_size = -1
-                company_founded = -1
-                company_sector = -1
+                company_size = 'NA'
+                company_founded = 'NA'
+                company_sector = 'NA'
 
             if verbose:
                 print("Size: {}".format(company_size))
@@ -268,27 +320,46 @@ def get_jobs(url, num_jobs, verbose, slp_time):
                 print("Sector: {}".format(company_sector))
                 print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
 
+            '''
             jobs.append({
                 "Job ID": job_id,
                 "Job Title": job_title,
                 "Job Description": job_description,
+                "Company ID": company_id,
                 "Company Name": company_name,
+                "Job URL": job_url,
                 "Location": location,
                 "Size": company_size,
                 "Founded": company_founded,
                 "Sector": company_sector,
             })
-            # add job to jobs
+            '''
+            # add job to data pipeline. Makesure you call it
+            data_pipeline.add_job({
+                "job_id": job_id,
+                "job_title": job_title,
+                "job_description": job_description,
+                "company_id": company_id,
+                "company_name": company_name,
+                "job_url": job_url,
+                "job_location": location,
+                "company_size": company_size,
+                "founded_year": company_founded,
+                "company_sector": company_sector,
+            })
+            # Added successfully collected job to collected job id lists
+            collected_job_ids.add(job_id)
 
         # Clicking on the "next page" button
         try:
             driver.find_element(By.CSS_SELECTOR, 'button[data-test="load-more"]').click()
+            time.sleep(1) # Add a brief pause between page loads
         except NoSuchElementException:
-            print("Scraping terminated before reaching target number of jobs. Needed {}, got {}.".format(num_jobs,
-                                                                                                         len(jobs)))
+            print("No More Page or Scraping terminated before reaching target number of jobs. Needed {}, got {}.".format(num_jobs,
+                                                                                                         len(collected_job_ids)))
             break
 
     # quit the driver when we're done
     driver.quit()
     print("Scraping Completed. Close Driver....")
-    return pd.DataFrame(jobs)  # This line converts the dictionary object into a pandas DataFrame.
+    # return pd.DataFrame(jobs)  # This line converts the dictionary object into a pandas DataFrame.

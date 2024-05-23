@@ -1,0 +1,14 @@
+<component name="CopyrightManager">
+  <settings default="Vy_Kauppinen">
+    <module2copyright>
+      <element module="Project Files" copyright="Vy_Kauppinen" />
+    </module2copyright>
+    <LanguageOptions name="Python">
+      <option name="fileTypeOverride" value="3" />
+      <option name="block" value="false" />
+      <option name="separateBefore" value="true" />
+      <option name="separateAfter" value="true" />
+      <option name="filler" value="*" />
+    </LanguageOptions>
+  </settings>
+</component>
