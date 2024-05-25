@@ -1,9 +1,10 @@
 # ******************************************************************************
 #  Copyright (c) 2024. Vy Kauppinen (VyKp00)
 # ******************************************************************************
-
+import json
 # For Fake User Agent
 import os
+import random
 import re
 import time
 from random import randint
@@ -24,6 +25,21 @@ from selenium_stealth import stealth
 
 MY_API_KEY = os.getenv('MY_SCRAPEOPS_API_KEY')
 
+import logging
+
+# ----------- Logging Level
+# Level - Numeric value
+# CRITICAL - 50
+# ERROR - 40
+# WARNING - 30
+# INFO - 20
+# DEBUG - 10
+# NOTSET - 0
+# create logger
+logger = logging.getLogger('__name__')
+level = 10
+logger.setLevel(level)
+
 
 # Get Random User Agent
 def get_user_agent():
@@ -42,13 +58,6 @@ def get_user_agent():
 
     return random_agent
 
-
-list_of_urls = [
-    # US
-    'https://www.glassdoor.com/Job/united-states-microservice-jobs-SRCH_IL.0,13_IN1_KO14,26.htm?sortBy=date_desc&jobTypeIndeed=CF3CP',
-]
-
-
 # GlassDoor attach job and company id in data-brandviews text. This function is collect the company id
 # At this moment, it looks like this "MODULE:n=jsearch-job-listing:eid=680848:jlid=1009289416346"
 def fetch_company_id(data):
@@ -61,15 +70,79 @@ def fetch_company_id(data):
     # Extract the company_id if the pattern is found
     try:
         company_id = match.group(1)
-        print(f'CompanyId: {company_id}')
+        logger.info(f'CompanyId: {company_id}')
     except:
-        print('ERROR: CompanyId not found')
+        logger.warning('ERROR: CompanyId not found')
         company_id = 'NA'
 
     return company_id
 
 
-def get_jobs(url, verbose, slp_time, data_pipeline):
+# Retries & Concurrency Management
+# The function will enter a while loop that continues until one of three conditions is met:
+#
+# Scraping is successful.
+# The maximum number of retries (retry_limit) is reached.
+# An exception occurs that prevents further retries.
+def get_status(logs):
+    for log in logs:
+        if log['message']:
+            d = json.load(log['message'])
+            try:
+                content_type = (
+                        'text/html'
+                        in d['message']['params']['response']['headers']['content-type']
+                )
+                response_received = d['message']['method'] == 'Network.responseReceived'
+                if content_type and response_received:
+                    return d['message']['params']['response']['status']
+            except:
+                pass
+
+
+# Check if we got anti-bot alert
+def passed_anti_bot_check(self, response):
+    if "<title>Security | Glassdoor</title>" in response:
+        return False
+    return True
+
+
+# Random Scroller
+def random_scroll(driver, min_scroll, max_scroll, scroll_delay):
+    """
+    Scrolls the web page a small random amount within the specified range to simulate human behavior.
+
+    Args:
+    driver (webdriver): The Selenium WebDriver instance.
+    min_scroll (int): The minimum number of pixels to scroll.
+    max_scroll (int): The maximum number of pixels to scroll.
+    scroll_delay (float): The delay in seconds between scroll actions.
+    """
+    scroll_amount = random.randint(min_scroll, max_scroll)
+    driver.execute_script(f"window.scrollBy(0, {scroll_amount});")
+    time.sleep(scroll_delay)
+
+# Scroll near the bottom to see "Load More" Button
+def scroll_to_near_bottom(driver, min_scroll, max_scroll, scroll_delay):
+    # Scroll down near the bottom
+    scroll_amount = random.randint(min_scroll, max_scroll)
+    driver.execute_script(f"window.scrollTo(0, document.body.scrollHeight - {scroll_amount});")
+    time.sleep(scroll_delay)  # Allow time for the page to load more content
+
+    # Check if the 'Load More' button is visible and clickable
+    is_button_display = False
+    try:
+        load_more_button = driver.find_element(By.CSS_SELECTOR, 'button[data-test="load-more"]')
+        if load_more_button.is_displayed():
+            print("Loading Button Founded")
+        else:
+            driver.execute_script("window.scrollTo(0, document.body.scrollHeight - {scroll_amount});")
+    except:
+        logging.warning("Loading Button Not Found")
+
+
+
+def get_jobs(url, verbose, slp_time, data_pipeline, country):
     '''Gathers jobs, scraped from Glassdoor'''
     print("Scraping start.....................")
 
@@ -79,6 +152,8 @@ def get_jobs(url, verbose, slp_time, data_pipeline):
     # Setup Chrome Option (As of now selenium-stealth only support Selenium Chrome.)
     options = Options()
 
+    # Run in headless mode for automated tasks without a visible browser window
+    #options.add_argument("--headless")
     # Maximize the Chrome window upon startup for an optimized viewport
     options.add_argument('start-maximized')
     # Disable Chrome Extension to ensure a clean automation env
@@ -102,9 +177,33 @@ def get_jobs(url, verbose, slp_time, data_pipeline):
             fix_hairline=True,
             )
 
+    def reload_page():
+        try:
+            # Try clicking the 'Reload' button
+            button_2 = driver.find_element(By.XPATH,
+                                           '//*[@id="app-navigation"]/div[3]/div[2]/div[2]/div/div[1]/div/button')
+            WebDriverWait(driver, 10).until(EC.element_to_be_clickable(button_2)).click()
+            logger.warning("Reloading Page....")
+        except:
+            # If 'Reload' button is not found, refresh the page with driver
+            driver.refresh()
+            logger.warning("Reload Button not Found. Page refreshed")
+        time.sleep(slp_time)
+
+    # Sometimes there's broken job card so refreshing doesn't help
+    def card_is_broken():
+        try:
+            # Try finding the 'Reload' button
+            button_2 = driver.find_element(By.XPATH,
+                                           '//*[@id="app-navigation"]/div[3]/div[2]/div[2]/div/div[1]/div/button')
+            logger.warning("Reload Button Found: That Job Card is Broken.")
+            return True
+        except:
+            logger.warning("Reload Button not Found. Different Issues")
+            return False
+
     # We get url from the list of urls
     driver.get(url)
-    #jobs = []
 
     # The set of collected jobs to prevent duplicates
     collected_job_ids = set()
@@ -113,9 +212,13 @@ def get_jobs(url, verbose, slp_time, data_pipeline):
     # Wait for the page to load
     time.sleep(slp_time)
 
-    cookie_btn = WebDriverWait(driver, 10).until(EC.element_to_be_clickable(
-        (By.CSS_SELECTOR, 'button#onetrust-accept-btn-handler')))
-    cookie_btn.click()
+    try:
+        cookie_btn = WebDriverWait(driver, 10).until(EC.element_to_be_clickable(
+            (By.CSS_SELECTOR, 'button#onetrust-accept-btn-handler')))
+        cookie_btn.click()
+    except:
+        print("Cannot find Accept Cookies button")
+        pass
 
     # Get Total of Job Number
     time.sleep(1)
@@ -126,7 +229,6 @@ def get_jobs(url, verbose, slp_time, data_pipeline):
         title_text = None
         print("ERROR: Cannot find title")
         pass
-
 
     if title_text:
         # Ensure title_text is not empty and contains at least one space
@@ -146,6 +248,7 @@ def get_jobs(url, verbose, slp_time, data_pipeline):
         print("Title text is None or empty. Use default num_jobs as 50")
 
     # Either Define a fix number of job or collect all
+    # ******************* MAIN LOOP *************
     while len(collected_job_ids) < num_jobs:  # If true, should be still looking for new jobs.
 
         # Let the page load. Change this number based on your internet speed.
@@ -178,8 +281,11 @@ def get_jobs(url, verbose, slp_time, data_pipeline):
 
             # If job id exists already, skip it
             if job_id in collected_job_ids:
-                print('Job Id Has Been Scraped. Drop This: {}'.format(job_id))
+                # print('Job Id Has Been Scraped. Drop This: {}'.format(job_id))
                 continue
+
+            # Perform a small random scroll
+            random_scroll(driver, min_scroll=50, max_scroll=200, scroll_delay=1)
 
             print("---------Progress: {}----------".format("" + str(len(collected_job_ids)) + "/" + str(num_jobs)))
             if len(collected_job_ids) >= num_jobs:
@@ -205,8 +311,7 @@ def get_jobs(url, verbose, slp_time, data_pipeline):
                 print("Click Div_card Failed")
                 pass
 
-            # Wait for the page to load
-            time.sleep(2)
+            time.sleep(2)  # Wait for the page to render
             collected_successfully = False
 
             # SomeTimes Sign-up Pop-up open here too
@@ -231,6 +336,7 @@ def get_jobs(url, verbose, slp_time, data_pipeline):
                 print('------Show More Button Click Failed Or Disappear--------')
                 pass
 
+
             while not collected_successfully:
                 # ************ Fetch Job Information *************
                 try:
@@ -247,31 +353,56 @@ def get_jobs(url, verbose, slp_time, data_pipeline):
                     # Filter company_id from data-brandviews
                     meta_data_raw = job_card.get_attribute('data-brandviews')
                     company_id = fetch_company_id(meta_data_raw)
-                    print('Company ID done')
+                    logger.info('Company ID done')
 
                     # Company name is in the first h4
                     company_name = job_detail.find_element(By.TAG_NAME, 'h4').text
-                    print('Comp Name done')
+                    logger.info('Comp Name done')
 
                     # Find the job location
                     location = job_detail.find_element(By.CSS_SELECTOR, 'div[data-test="location"]').text
-                    print('Location Done')
+                    logger.info('Location Done')
 
                     # Job title is in the first h1 element
                     job_title = job_detail.find_element(By.CSS_SELECTOR, 'h1[aria-hidden="false"]').text
-                    print('Job Title Done')
+                    logger.info('Job Title Done')
 
                     # Because the description have <p> and <ul>. Fetch all raw content atm
                     job_description = job_detail.find_element(By.XPATH, 'section/div[2]/div[1]').text
-                    print('Job Description Done')
+                    logger.info('Job Description Done')
 
                     # Get job relative url to recheck data easily
                     job_url = job_card.find_element(By.CSS_SELECTOR, 'a[data-test="job-link"]').get_attribute('href')
-                    print('URL Done')
+                    logger.info('URL Done')
                     collected_successfully = True
-                except:
+                except :
                     time.sleep(2)
-                    print("Cannot fetch data")
+                    # If that job card is broken, Try skipping to the next job
+                    if card_is_broken():
+                        logger.warning("That Card is broken....")
+                        company_id = -1
+                        company_name = -1
+                        location = -1
+                        job_title = -1
+                        job_description = -1
+                        job_url = -1
+                        collected_successfully = True
+                    else:
+                        try:
+                            next_btn = WebDriverWait(driver, 10).until(
+                                EC.element_to_be_clickable((By.CSS_SELECTOR, 'button[data-test="load-more"]')))
+                            next_btn.click()
+                            time.sleep(2)
+                            logger.warning("Cannot fetch data. Try Clicking Next Button")
+                        except:
+                            logger.warning("Waiting Time Out... Skip this card")
+                            company_id = -1
+                            company_name = -1
+                            location = -1
+                            job_title = -1
+                            job_description = -1
+                            job_url = -1
+                            collected_successfully = True
 
             # Printing for debugging. If you set verbose = True
             if verbose:
@@ -320,46 +451,62 @@ def get_jobs(url, verbose, slp_time, data_pipeline):
                 print("Sector: {}".format(company_sector))
                 print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
 
-            '''
-            jobs.append({
-                "Job ID": job_id,
-                "Job Title": job_title,
-                "Job Description": job_description,
-                "Company ID": company_id,
-                "Company Name": company_name,
-                "Job URL": job_url,
-                "Location": location,
-                "Size": company_size,
-                "Founded": company_founded,
-                "Sector": company_sector,
-            })
-            '''
             # add job to data pipeline. Makesure you call it
-            data_pipeline.add_job({
-                "job_id": job_id,
-                "job_title": job_title,
-                "job_description": job_description,
-                "company_id": company_id,
-                "company_name": company_name,
-                "job_url": job_url,
-                "job_location": location,
-                "company_size": company_size,
-                "founded_year": company_founded,
-                "company_sector": company_sector,
-            })
+            # If this card is not broken
+            if company_id == -1:
+                print('>>>>>>>>>> Skip the broken job card: ', job_id)
+            else:
+                data_pipeline.add_job({
+                    "job_id": job_id,
+                    "job_title": job_title,
+                    "job_description": job_description,
+                    "company_id": company_id,
+                    "company_name": company_name,
+                    "job_url": job_url,
+                    "job_location": location,
+                    "company_size": company_size,
+                    "founded_year": company_founded,
+                    "company_sector": company_sector,
+                    "country": country,
+                })
             # Added successfully collected job to collected job id lists
+            # Also the broken one to avoid it
             collected_job_ids.add(job_id)
 
         # Clicking on the "next page" button
-        try:
-            driver.find_element(By.CSS_SELECTOR, 'button[data-test="load-more"]').click()
-            time.sleep(1) # Add a brief pause between page loads
-        except NoSuchElementException:
-            print("No More Page or Scraping terminated before reaching target number of jobs. Needed {}, got {}.".format(num_jobs,
-                                                                                                         len(collected_job_ids)))
-            break
+        scroll_to_near_bottom(driver, 20, 80,1.5)
+        if len(collected_job_ids) >= 850: # If there's more than 850 rows already. Add more delay time:
+            try:
+                next_btn = WebDriverWait(driver, 20).until(
+                    EC.element_to_be_clickable((By.CSS_SELECTOR, 'button[data-test="load-more"]')))
+                next_btn.click()
+                time.sleep(3)
+            except:
+                # Take screenshot of the page
+                # driver.save_screenshot("screenshot_india.png")
+                print(
+                    "No More Page or Scraping terminated before reaching target number of jobs. Needed {}, got {}.".format(
+                        num_jobs,
+                        len(collected_job_ids)))
+                break
+        else:
+            try:
+                next_btn = WebDriverWait(driver, 10).until(
+                    EC.element_to_be_clickable((By.CSS_SELECTOR, 'button[data-test="load-more"]')))
+                next_btn.click()
+                #driver.find_element(By.CSS_SELECTOR, 'button[data-test="load-more"]').click()
+                time.sleep(1.5)  # Add a brief pause between page loads
+            except:
+                # Take screenshot of the page
+                # driver.save_screenshot("screenshot_india.png")
+                print(
+                    "No More Page or Scraping terminated before reaching target number of jobs. Needed {}, got {}.".format(
+                        num_jobs,
+                        len(collected_job_ids)))
+                break
 
+    print("Scraping Completed. Closing Driver....")
+    time.sleep(2)
     # quit the driver when we're done
     driver.quit()
-    print("Scraping Completed. Close Driver....")
     # return pd.DataFrame(jobs)  # This line converts the dictionary object into a pandas DataFrame.

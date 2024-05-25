@@ -22,6 +22,7 @@ class JobCard:
     company_size: str = ""
     founded_year: str = ""
     company_sector: str = ""
+    country: str = ""
 
     # Final data constructor:
     #  * job_id: int
@@ -34,6 +35,7 @@ class JobCard:
     #  * company_size: str
     #  * founded_year: str
     #  * company_sector: str
+    #   * country: str
     def __post_init__(self, job_id_string):
         self.job_id = self.convert_id_to_string(job_id_string)
         self.job_title = self.clean_job_title()
@@ -45,6 +47,7 @@ class JobCard:
         self.company_size = self.company_size
         self.founded_year = self.founded_year
         self.company_sector = self.company_sector
+        self.country = self.country
         pass
 
     # Convert job title to string
