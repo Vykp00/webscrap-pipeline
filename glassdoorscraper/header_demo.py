@@ -494,22 +494,19 @@ def get_jobs(url, verbose, slp_time, data_pipeline, country):
                 time.sleep(2)
                 button_clicked = True
 
-            # FIXME: Loading button didn't load after too many jobs (900+). Re-scape after refesh
             except:
                 # If we still have missing collected data
                 if len(collected_job_ids) < num_jobs:
-                    logger.warning("Reload ERROR. Load More Button disappear. Refresh page")
-                    driver.save_screenshot(f"load-more-button-error-{country}.png ")
-                    driver.refresh()
-                    time.sleep(slp_time)
-                    button_clicked = True
-                    just_refresh = True
+                    logger.warning("Reload ERROR. Load More Button disappear. Scraping terminated before reaching "
+                                   "target number of jobs. Needed {}, got {}.".format(num_jobs, len(collected_job_ids)))
+                    button_space_element = driver.find_element(By.CSS_SELECTOR, 'div.JobsList_wrapper__EyUF6')
+                    # TODO: Take screenshot of full page instead
+                    #button_space_element.screenshot(f'load-more-button-error-{country}.png')
+                    time.sleep(0.5)
                 else:
                     print(
-                        "No More Page or Scraping terminated before reaching target number of jobs. Needed {}, got {}.".format(
-                            num_jobs,
-                            len(collected_job_ids)))
-                    break
+                        "No More Page. Needed {}, got {}.".format(num_jobs,len(collected_job_ids)))
+                break
 
     print("Scraping Completed. Closing Driver....")
     time.sleep(2)
