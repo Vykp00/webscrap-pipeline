@@ -34,7 +34,7 @@ import sys
 # create logger
 
 # Create Logger
-logger = logging.getLogger('glassdoor_scraper')
+logger = logging.getLogger('__utils__')
 level = logging.DEBUG
 logger.setLevel(level)
 

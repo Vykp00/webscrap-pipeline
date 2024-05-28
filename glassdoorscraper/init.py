@@ -10,17 +10,27 @@ from random import randint
 import dotenv
 import requests
 from selenium import webdriver
-from selenium.common.exceptions import NoSuchElementException, ElementNotInteractableException
+from selenium.common.exceptions import NoSuchElementException, ElementNotInteractableException, \
+    ElementClickInterceptedException
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 
+dotenv.load_dotenv(dotenv_path='./.env')
+
+# For Selenium Stealth
+from selenium_stealth import stealth
+
+MY_API_KEY = os.getenv('MY_SCRAPEOPS_API_KEY')
 
 # ******** CREATE A LOGGER ********
 import logging
 import sys
+
+from glassdoorscraper.utils import get_user_agent
 
 # ----------- Logging Level
 # Level - Numeric value
@@ -33,7 +43,7 @@ import sys
 # create logger
 
 # Create Logger
-logger = logging.getLogger('glassdoor_scraper')
+logger = logging.getLogger('__init__')
 level = logging.DEBUG
 logger.setLevel(level)
 
@@ -80,12 +90,48 @@ list_of_urls = [
      'country': 'South Africa'},
 ]
 
-data_pipeline = GlassdoorPostgresPipeline(postgres_db_name="jobglassdoor")
+if __name__ == "__main__":
+    # ****** Initializing the webdriver ********
+    # Get Random User Agent
+    random_agent = get_user_agent()
+    # Setup Chrome Option (As of now selenium-stealth only support Selenium Chrome.)
+    options = Options()
 
-for element in list_of_urls:
-    # TODO: Remember to change the country name
-    url = element['url']
-    country = element['country']
-    df = gs.get_jobs(url, 5, data_pipeline, country)
-data_pipeline.close_pipeline()
+    # Run in headless mode for automated tasks without a visible browser window
+    options.add_argument("--headless")
+    # Maximize the Chrome window upon startup for an optimized viewport
+    options.add_argument('start-maximized')
+    # Disable Chrome Extension to ensure a clean automation env
+    options.add_argument('--disable-extensions')
+    # Disable sandbox mode
+    # options.add_argument('--no-sandbox')
+    # Disable the use of the /dev/shm shared memory space, addressing potential memory-related issues
+    options.add_argument('--disable-dev-shm-usage')
+    # Set a custom user agent to simulate different browsers or devices for enhanced stealth during automation
+    options.add_argument(f'user-agent={random_agent}')
 
+    # Using ChromedriverManager to automatically download and install Chromedriver
+    driver = webdriver.Chrome(options=options,
+                              service=Service(ChromeDriverManager().install()))
+
+    # Use Selenium-Stealth to make this browser instance stealthy
+    stealth(driver,
+            languages=["en-US", "en"],
+            vendor="Google Inc.",
+            platform="Win32",
+            webgl_vendor="Intel Inc.",
+            renderer="Intel Iris OpenGL Engine",
+            fix_hairline=True,
+            )
+
+    data_pipeline = GlassdoorPostgresPipeline(postgres_db_name="jobglassdoor")
+
+    for element in list_of_urls:
+        url = element['url']
+        country = element['country']
+        df = gs.get_jobs(driver, url, 5, data_pipeline, country)
+    data_pipeline.close_pipeline()
+    data_pipeline = GlassdoorPostgresPipeline(postgres_db_name="jobglassdoor")
+    time.sleep(2)
+    driver.quit()
+    print('Scraping completed successfully. Browser closed.')

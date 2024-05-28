@@ -39,7 +39,7 @@ import sys
 # create logger
 
 # Create Logger
-logger = logging.getLogger('glassdoor_scraper')
+logger = logging.getLogger('__glassdoor_scraper__')
 level = logging.DEBUG
 logger.setLevel(level)
 
@@ -57,7 +57,7 @@ c_handler.setFormatter(formatter)
 logger.addHandler(c_handler)
 
 # Get utils
-from utils import get_user_agent, random_scroll, fetch_company_id, scroll_to_near_bottom
+from utils import random_scroll, fetch_company_id, scroll_to_near_bottom
 
 
 # Sometimes there's broken job card so refreshing doesn't help
@@ -73,43 +73,9 @@ def card_is_broken(driver):
         return False
 
 
-def get_jobs(url, slp_time, data_pipeline, country):
+def get_jobs(driver, url, slp_time, data_pipeline, country):
     '''Gathers jobs, scraped from Glassdoor'''
     print("Scraping start.....................")
-
-    # TODO: Transfer to init.py
-    # ****** Initializing the webdriver ********
-    # Get Random User Agent
-    random_agent = get_user_agent()
-    # Setup Chrome Option (As of now selenium-stealth only support Selenium Chrome.)
-    options = Options()
-
-    # Run in headless mode for automated tasks without a visible browser window
-    options.add_argument("--headless")
-    # Maximize the Chrome window upon startup for an optimized viewport
-    options.add_argument('start-maximized')
-    # Disable Chrome Extension to ensure a clean automation env
-    options.add_argument('--disable-extensions')
-    # Disable sandbox mode
-    # options.add_argument('--no-sandbox')
-    # Disable the use of the /dev/shm shared memory space, addressing potential memory-related issues
-    options.add_argument('--disable-dev-shm-usage')
-    # Set a custom user agent to simulate different browsers or devices for enhanced stealth during automation
-    options.add_argument(f'user-agent={random_agent}')
-
-    # Using ChromedriverManager to automatically download and install Chromedriver
-    driver = webdriver.Chrome(options=options,
-                              service=Service(ChromeDriverManager().install()))
-
-    # Use Selenium-Stealth to make this browser instance stealthy
-    stealth(driver,
-            languages=["en-US", "en"],
-            vendor="Google Inc.",
-            platform="Win32",
-            webgl_vendor="Intel Inc.",
-            renderer="Intel Iris OpenGL Engine",
-            fix_hairline=True,
-            )
 
     # Wait for the page to load
     # TODO: Make alternatives for time.sleep() as it's not recommended for production
@@ -416,6 +382,4 @@ def get_jobs(url, slp_time, data_pipeline, country):
 
     print("Scraping Completed. Closing Driver....")
     time.sleep(2)
-    # quit the driver when we're done
-    driver.quit()
-    # return pd.DataFrame(jobs)  # This line converts the dictionary object into a pandas DataFrame.
+

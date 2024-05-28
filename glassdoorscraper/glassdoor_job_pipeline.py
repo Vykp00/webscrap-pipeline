@@ -20,7 +20,11 @@ POSTGRES_USER = os.getenv("MY_POSTGRES_USER")
 POSTGRES_PASSWORD = os.getenv("MY_POSTGRES_PASSWORD_WIN")
 POSTGRES_JOB_DB = os.getenv("MY_POSTGRES_GLASSDOOR_DB")
 
+# ******** CREATE A LOGGER ********
 import logging
+import sys
+
+from glassdoorscraper.utils import get_user_agent
 
 # ----------- Logging Level
 # Level - Numeric value
@@ -31,9 +35,24 @@ import logging
 # DEBUG - 10
 # NOTSET - 0
 # create logger
-logger = logging.getLogger('__name__')
-level = 0
+
+# Create Logger
+logger = logging.getLogger('__pipeline__')
+level = logging.INFO
 logger.setLevel(level)
+
+# Create console handler
+c_handler = logging.StreamHandler()
+c_handler.setLevel(level)
+#
+# # Create formatter
+formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+#
+# # Add formatter to ch
+c_handler.setFormatter(formatter)
+#
+# # Add ch to logger
+logger.addHandler(c_handler)
 
 
 # This pipelines save the data to csv files
