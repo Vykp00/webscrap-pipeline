@@ -34,5 +34,3 @@ class ReplyItem(scrapy.Item):
     created_date = scrapy.Field()  # Reply's created date
     scrap_date = scrapy.Field()  # The date this reply was scraped
     content = scrapy.Field()  # Reply content
-
-#class AnswerItem(scrapy.Item):
