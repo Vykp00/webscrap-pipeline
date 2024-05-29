@@ -38,21 +38,21 @@ from glassdoorscraper.utils import get_user_agent
 
 # Create Logger
 logger = logging.getLogger('__pipeline__')
-level = logging.INFO
+level = logging.WARNING
 logger.setLevel(level)
 
 # Create console handler
-c_handler = logging.StreamHandler()
-c_handler.setLevel(level)
-#
-# # Create formatter
-formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-#
-# # Add formatter to ch
-c_handler.setFormatter(formatter)
-#
-# # Add ch to logger
-logger.addHandler(c_handler)
+# c_handler = logging.StreamHandler()
+# c_handler.setLevel(level)
+# #
+# # # Create formatter
+# formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+# #
+# # # Add formatter to ch
+# c_handler.setFormatter(formatter)
+# #
+# # # Add ch to logger
+# logger.addHandler(c_handler)
 
 
 # This pipelines save the data to csv files

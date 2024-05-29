@@ -35,7 +35,7 @@ import sys
 
 # Create Logger
 logger = logging.getLogger('__utils__')
-level = logging.DEBUG
+level = logging.WARNING
 logger.setLevel(level)
 
 # Create console handler
@@ -111,7 +111,7 @@ def get_status(logs):
 
 
 # Check if we got anti-bot alert
-def passed_anti_bot_check(self, response):
+def passed_anti_bot_check(response):
     if "<title>Security | Glassdoor</title>" in response:
         return False
     return True

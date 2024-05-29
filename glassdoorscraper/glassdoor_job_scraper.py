@@ -40,7 +40,7 @@ import sys
 
 # Create Logger
 logger = logging.getLogger('__glassdoor_scraper__')
-level = logging.DEBUG
+level = logging.INFO
 logger.setLevel(level)
 
 # Create console handler
@@ -73,7 +73,9 @@ def card_is_broken(driver):
         return False
 
 
-def get_jobs(driver, url, slp_time, data_pipeline, country, retry_limit=3, anti_bot_check=False):
+def get_jobs(driver, element, slp_time, data_pipeline, retry_limit=3, anti_bot_check=False):
+    url = element['url']
+    country = element['country']
     retry_count = 0
     while retry_count < retry_limit:
         try:
@@ -87,8 +89,10 @@ def get_jobs(driver, url, slp_time, data_pipeline, country, retry_limit=3, anti_
             logs = driver.get_log('performance')
             response = get_status(logs)
             response_text = driver.page_source
+            # logger.debug(response_text)
 
             if response == 200:
+                # If anti-bot check is enabled and we passed it, continue scraping
                 if anti_bot_check and not passed_anti_bot_check(response_text):
                     print('Anti-bot check failed. Retrying...')
                     time.sleep(2) # Add a small delay before retrying
@@ -403,7 +407,7 @@ def get_jobs(driver, url, slp_time, data_pipeline, country, retry_limit=3, anti_
                 time.sleep(2)
                 return  # End retrying
             else:
-                print(f'Received status code: {response.status_code}. Retrying...')
+                print(f'Received status code: {response}. Retrying...')
         except Exception as e:
             print('Error occurred: ', e)
 
