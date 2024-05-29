@@ -7,20 +7,13 @@ import re
 import time
 
 import dotenv
-from selenium import webdriver
-from selenium.common.exceptions import NoSuchElementException, ElementNotInteractableException, \
-    ElementClickInterceptedException
-from webdriver_manager.chrome import ChromeDriverManager
-from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.chrome.service import Service
+
+from selenium.common.exceptions import NoSuchElementException, ElementClickInterceptedException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 
 dotenv.load_dotenv(dotenv_path='./.env')
-
-# For Selenium Stealth
-from selenium_stealth import stealth
 
 MY_API_KEY = os.getenv('MY_SCRAPEOPS_API_KEY')
 
@@ -81,7 +74,7 @@ def get_jobs(driver, element, slp_time, data_pipeline, retry_limit=3, anti_bot_c
         try:
 
             # Wait for the page to load
-            # TODO: Make alternatives for time.sleep() as it's not recommended for production
+            # Make alternatives for time.sleep() as it's not recommended for production
             driver.set_page_load_timeout(30)
 
             # We get url from the list of urls
@@ -217,7 +210,7 @@ def get_jobs(driver, element, slp_time, data_pipeline, retry_limit=3, anti_bot_c
                         try:
                             driver.find_element(By.CLASS_NAME, 'CloseButton').click()  # clicking to the X.
                             print(' Sign up x out worked')
-                        except NoSuchElementException or ElementNotInteractableException:
+                        except:
                             print(' Sign up x out failed')
                             pass
 
@@ -393,10 +386,12 @@ def get_jobs(driver, element, slp_time, data_pipeline, retry_limit=3, anti_bot_c
                                     "Reload ERROR. Load More Button disappear. Scraping terminated before reaching "
                                     "target number of jobs. Needed {}, got {}.".format(num_jobs,
                                                                                        len(collected_job_ids)))
-                                button_space_element = driver.find_element(By.CSS_SELECTOR,
-                                                                           'div.JobsList_wrapper__EyUF6')
-                                # TODO: Take screenshot of full page instead
-                                # button_space_element.screenshot(f'load-more-button-error-{country}.png')
+
+                                # TODO: Maybe take a screenshot of full page instead
+                                driver.get_screenshot_as_file(f'load-more-button-error-{country}.png')
+                                # body_element = driver.find_element(By.TAG_NAME, 'body')
+                                # # Take screenshot of the body
+                                # body_element.screenshot(f'load-more-button-error-{country}.png')
                                 time.sleep(0.5)
                             else:
                                 print(

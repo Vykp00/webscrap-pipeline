@@ -2,22 +2,13 @@ import glassdoor_job_scraper as gs
 from glassdoor_job_pipeline import GlassdoorPostgresPipeline
 # For Fake User Agent
 import os
-import random
-import re
 import time
-from random import randint
 
 import dotenv
-import requests
 from selenium import webdriver
-from selenium.common.exceptions import NoSuchElementException, ElementNotInteractableException, \
-    ElementClickInterceptedException
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.support.ui import WebDriverWait
 import concurrent.futures
 
 dotenv.load_dotenv(dotenv_path='.env')
