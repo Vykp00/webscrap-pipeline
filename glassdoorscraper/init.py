@@ -19,7 +19,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 
-dotenv.load_dotenv(dotenv_path='./.env')
+dotenv.load_dotenv(dotenv_path='.env')
 
 # For Selenium Stealth
 from selenium_stealth import stealth
@@ -29,7 +29,6 @@ MY_API_KEY = os.getenv('MY_SCRAPEOPS_API_KEY')
 # ******** CREATE A LOGGER ********
 import logging
 import sys
-
 from glassdoorscraper.utils import get_user_agent
 
 # ----------- Logging Level
@@ -90,6 +89,8 @@ list_of_urls = [
      'country': 'South Africa'},
 ]
 
+# Create multi-thread
+
 if __name__ == "__main__":
     # ****** Initializing the webdriver ********
     # Get Random User Agent
@@ -109,6 +110,9 @@ if __name__ == "__main__":
     options.add_argument('--disable-dev-shm-usage')
     # Set a custom user agent to simulate different browsers or devices for enhanced stealth during automation
     options.add_argument(f'user-agent={random_agent}')
+
+    # Set retry request
+    options.set_capability("goog:loggingPrefs", {"performance": "ALL", "browser": "ALL"})
 
     # Using ChromedriverManager to automatically download and install Chromedriver
     driver = webdriver.Chrome(options=options,

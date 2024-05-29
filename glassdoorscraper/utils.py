@@ -14,7 +14,7 @@ import dotenv
 import requests
 from selenium.webdriver.common.by import By
 
-dotenv.load_dotenv(dotenv_path='./.env')
+dotenv.load_dotenv()
 
 
 MY_API_KEY = os.getenv('MY_SCRAPEOPS_API_KEY')
@@ -96,16 +96,16 @@ def fetch_company_id(data):
 # An exception occurs that prevents further retries.
 def get_status(logs):
     for log in logs:
-        if log['message']:
-            d = json.load(log['message'])
+        if log["message"]:
+            d = json.loads(log["message"])
             try:
                 content_type = (
-                        'text/html'
-                        in d['message']['params']['response']['headers']['content-type']
+                    "text/html"
+                    in d["message"]["params"]["response"]["headers"]["content-type"]
                 )
-                response_received = d['message']['method'] == 'Network.responseReceived'
+                response_received = d["message"]["method"] == "Network.responseReceived"
                 if content_type and response_received:
-                    return d['message']['params']['response']['status']
+                    return d["message"]["params"]["response"]["status"]
             except:
                 pass
 
