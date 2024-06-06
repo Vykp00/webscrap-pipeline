@@ -17,8 +17,8 @@ MY_POSTGRES_PASSWORD_WIN = "POSTGRES_PASSWORD"
 MY_SCRAPEOPS_API_KEY = "YOUR API KEYS"
 ````
 
-Next created a databases which is needed to saved to PostgreSQL (by default, `postgres_db_name="jobglassdoor"`)
-The `init.py` will save collected data to `job_listings` table by default. Thus, make sure a table is created first.
+Next create a databases which is needed to saved to PostgreSQL (by default, it is saved as `postgres_db_name="jobglassdoor"`)
+The `init.py` will save collected data to `job_listings` table by default. Thus, the following Query is run.
 ````postgresql
 CREATE TABLE job_listings (
     job_id BIGINT PRIMARY KEY,
