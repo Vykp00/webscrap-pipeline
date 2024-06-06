@@ -21,7 +21,7 @@ MY_API_KEY = os.getenv('MY_SCRAPEOPS_API_KEY')
 # ******** CREATE A LOGGER ********
 import logging
 import sys
-from glassdoorscraper.utils import get_user_agent
+from utils import get_user_agent
 
 # ----------- Logging Level
 # Level - Numeric value
@@ -109,6 +109,8 @@ if __name__ == "__main__":
     options.set_capability("goog:loggingPrefs", {"performance": "ALL", "browser": "ALL"})
 
     data_pipeline = GlassdoorPostgresPipeline(postgres_db_name="jobglassdoor")
+    # Uncommon if you want to save to csv
+    # data_pipeline = GlassdoorJobPipeline(csv_filename='demo_data.csv')
 
     for element in list_of_urls:
         # Get Random User Agent
@@ -134,6 +136,6 @@ if __name__ == "__main__":
         df = gs.get_jobs(driver, element, 5, data_pipeline, anti_bot_check=True)
         driver.quit()
     data_pipeline.close_pipeline()
-    data_pipeline = GlassdoorPostgresPipeline(postgres_db_name="jobglassdoor")
+    #data_pipeline = GlassdoorPostgresPipeline(postgres_db_name="jobglassdoor")
     time.sleep(2)
     print('Scraping completed successfully')

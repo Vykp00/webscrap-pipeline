@@ -6,7 +6,7 @@ import re
 
 import unicodedata
 
-from glassdoorscraper.textprocessing_utils.remove_contractions import CONTRACTION_MAP
+from .remove_contractions import CONTRACTION_MAP
 
 
 # Removing accented characters

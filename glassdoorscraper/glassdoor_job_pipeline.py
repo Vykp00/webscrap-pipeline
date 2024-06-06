@@ -22,9 +22,7 @@ POSTGRES_JOB_DB = os.getenv("MY_POSTGRES_GLASSDOOR_DB")
 
 # ******** CREATE A LOGGER ********
 import logging
-import sys
 
-from glassdoorscraper.utils import get_user_agent
 
 # ----------- Logging Level
 # Level - Numeric value
