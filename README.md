@@ -16,6 +16,7 @@ MY_POSTGRES_PASSWORD_WIN = "POSTGRES_PASSWORD"
 # Fake User Agent API https://scrapeops.io/docs/intro/
 MY_SCRAPEOPS_API_KEY = "YOUR API KEYS"
 ````
+### Save Data to PostgreSQL
 
 Next create a databases which is needed to saved to PostgreSQL (by default, it is saved as `postgres_db_name="jobglassdoor"`)
 The `init.py` will save collected data to `job_listings` table by default. Thus, the following Query is run.
@@ -34,6 +35,10 @@ CREATE TABLE job_listings (
     country VARCHAR(100)
 );
 ````
+
+### Save Data to CSV file
+If you prefer to save it to CSV file. Uncommon line 113 and delete the old `data_pipeline`
+
 Finally, run the script in `init.py`
 ````pycon
 python init.py

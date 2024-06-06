@@ -1,5 +1,5 @@
 import glassdoor_job_scraper as gs
-from glassdoor_job_pipeline import GlassdoorPostgresPipeline
+from glassdoor_job_pipeline import GlassdoorPostgresPipeline, GlassdoorJobPipeline
 # For Fake User Agent
 import os
 import time
